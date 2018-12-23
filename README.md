@@ -2,30 +2,30 @@
 
 How to monitor Junos devices using a TIG (Telegraf-Influxdb-Grafana) stack.  
 
-## About Telegraf
+# About Telegraf
 
 Telegraf is an open source collector written in GO.  
 Telegraf collects data and writes them into a database.  
 It is plugin-driven (it has input plugins, output plugins, ...)  
 
-## About Influxdb
+# About Influxdb
 
 Influxdb is an open source time series database written in GO.  
 
-## About Grafana 
+# About Grafana 
 
 Grafana is an open source tool used to visualize time series data.  
 It supports InfluxDB and other backends.  
 It runs as a web application.  
 It is written in GO.  
 
-## Looking for more information about Junos monitoring with telegraf and influxdb 
+# Looking for more information about Junos monitoring with telegraf and influxdb 
 
 you can refer to these repositories:
 - https://github.com/ksator/collect_telemetry_from_junos_with_telegraf 
 - https://github.com/ksator/collect_snmp_with_telegraf 
 
-## About the repository content
+# About the repository content
 
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
@@ -106,13 +106,7 @@ $ docker pull grafana/grafana:5.4.2
 ```
 verify 
 ```
-$ docker image grafana/grafana
-```
-```
-$ docker image telegraf
-```
-```
-$ docker image influxdb
+$ docker image 
 ```
 ### Instanciate containers 
 ```
@@ -142,6 +136,99 @@ $ docker ps
 ## docker compose workflow 
 
 # Troubleshooting
+
+## telegraf
+
+for troubleshooting purposes you can run this command
+```
+$ docker logs telegraf
+```
+start a shell session in the telegraf container
+```
+$ docker exec -it telegraf bash
+```
+verify the telegraf configuration file
+```
+# more /etc/telegraf/telegraf.conf
+```
+exit the telegraf container
+```
+# exit
+```
+
+## Influxdb 
+
+for troubleshooting purposes you can run this command
+```
+$ docker logs influxdb
+```
+start a shell session in the influxdb container
+```
+$ docker exec -it influxdb bash
+```
+run this command to read the influxdb configuration file
+```
+# more /etc/influxdb/influxdb.conf
+```
+query the database
+```
+# influx
+Connected to http://localhost:8086 version 1.7.2
+InfluxDB shell version: 1.7.2
+Enter an InfluxQL query
+> show users
+user    admin
+----    -----
+juniper false
+> show databases
+name: databases
+name
+----
+_internal
+juniper
+> use juniper
+Using database juniper
+> show measurements
+name: measurements
+name
+----
+/interfaces/
+/network-instances/network-instance/protocols/protocol/bgp/
+>
+```
+Sessions state on device 100.123.1.0, returns the most recent datapoint
+```
+> SELECT "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/session-state" from "/network-instances/network-instance/protocols/protocol/bgp/" WHERE device='100.123.1.0' ORDER BY DESC LIMIT 1
+name: /network-instances/network-instance/protocols/protocol/bgp/
+time                /network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/session-state
+----                -------------------------------------------------------------------------------------------------
+1545574801370098016 ESTABLISHED
+```
+repeat the same query and check if the timestamp changed
+```
+> SELECT "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/session-state" from "/network-instances/network-instance/protocols/protocol/bgp/" WHERE device='100.123.1.0' ORDER BY DESC LIMIT 1
+name: /network-instances/network-instance/protocols/protocol/bgp/
+time                /network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/session-state
+----                -------------------------------------------------------------------------------------------------
+1545574807371068091 ESTABLISHED
+>
+```
+```
+> exit
+# 
+```
+exit the influxdb container
+```
+# exit
+```
+## Grafana
+
+for troubleshooting purposes you can run this command
+```
+$ docker logs grafana
+```
+
+## Junos
 
 # Demo
 
