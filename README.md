@@ -250,27 +250,33 @@ Run this command to show system connections activity
 jcluser@MX1> show system connections
 ```
 
+
 The Junos packages `openconfig` and `na telemetry` are required for Openconfig telemetry.  
 Starting with Junos OS Release 18.3R1, the Junos OS image includes them, therefore, you do not need anymore to install them separately on your device.  
 If your devices are running an older Junos release, you need to install them separately.  
+
 Run this command to validate your Junos devices are using these 2 packages: 
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
 ```
 
+
 Run this command to show YANG packages installed on Junos: 
 ```
 jcluser@vMX-1> show system yang package
 ```
+
 Run this command to list YANG modules available on Junos: 
 ```
 jcluser@vMX-1> file list /opt/yang-pkg/junos-openconfig/yang/
 ```
+
 Run this command to know which `reference` of a YANG module is used on a Junos device.   
 Example with openconfig-interfaces.yang YANG module
 ```
 jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/openconfig-interfaces.yang
 ```
+
 Run this command to understand which YANG deviations are used on a Junos device:
 ```
 jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/jnx-openconfig-dev.yang
