@@ -245,12 +245,12 @@ $ docker logs grafana
 
 ## Junos
 
+### connections
 Run this command to show system connections activity
 ```
 jcluser@MX1> show system connections
 ```
-
-
+### packages 
 The Junos packages `openconfig` and `na telemetry` are required for Openconfig telemetry.  
 Starting with Junos OS Release 18.3R1, the Junos OS image includes them, therefore, you do not need anymore to install them separately on your device.  
 If your devices are running an older Junos release, you need to install them separately.  
@@ -259,8 +259,20 @@ Run this command to validate your Junos devices are using these 2 packages:
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
 ```
+### configuration 
 
+Run these commands to verify your Junos devices are running an appropriate configuration for snmp and openconfig telemetry
+```
+jcluser@vMX-1> show configuration snmp | display set
+```
+```
+jcluser@vMX-1> show configuration system services extension-service | display set
+```
+```
+jcluser@vMX-1> show configuration system services netconf | display set
+```
 
+### YANG 
 Run this command to show YANG packages installed on Junos: 
 ```
 jcluser@vMX-1> show system yang package
