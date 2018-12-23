@@ -2,33 +2,37 @@
 
 How to monitor Junos devices using a TIG (Telegraf-Influxdb-Grafana) stack.  
 
-For more information about Junos monitoring with telegraf and influxdb you can refer to these repositories:
-- https://github.com/ksator/collect_telemetry_from_junos_with_telegraf 
-- https://github.com/ksator/collect_snmp_with_telegraf 
-
-## Telegraf
+## About Telegraf
 
 Telegraf is an open source collector written in GO.  
 Telegraf collects data and writes them into a database.  
 It is plugin-driven (it has input plugins, output plugins, ...)  
 
-The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
-It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
-You can also use the telegraf `snmp` input plugin to monitor Junos.   
-
-## Influxdb
+## About Influxdb
 
 Influxdb is an open source time series database written in GO.  
 
-The file [meta.db](meta.db) contains the influxdb databases and users.  
-It has a database `juniper` and a user `juniper` with a password `juniper` 
-
-## Grafana 
+## About Grafana 
 
 Grafana is an open source tool used to visualize time series data.  
 It supports InfluxDB and other backends.  
 It runs as a web application.  
 It is written in GO.  
+
+## Looking for more information about Junos monitoring with telegraf and influxdb 
+
+you can refer to these repositories:
+- https://github.com/ksator/collect_telemetry_from_junos_with_telegraf 
+- https://github.com/ksator/collect_snmp_with_telegraf 
+
+## About the repository content
+
+The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
+It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
+You can also use the telegraf `snmp` input plugin to monitor Junos.   
+
+The file [meta.db](meta.db) contains the influxdb databases and users.  
+It has a database `juniper` and a user `juniper` with a password `juniper` 
 
 The yaml file [datasource.yaml](datasource.yaml) is config file.  
 This file contains a list of datasources that will be added during Grafana start up.  
