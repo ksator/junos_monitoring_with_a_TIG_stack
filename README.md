@@ -27,12 +27,16 @@ you can refer to these repositories:
 
 # About the repository content
 
+## Telegraf
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
 You can also use the telegraf `snmp` input plugin to monitor Junos.   
 
+## Influxdb
 The file [meta.db](meta.db) contains the influxdb databases and users.  
 It has a database `juniper` and a user `juniper` with a password `juniper` 
+
+## Grafana
 
 The yaml file [datasource.yaml](datasource.yaml) is config file.  
 This file contains a list of datasources that will be added during Grafana start up.  
@@ -88,6 +92,8 @@ There are two differents workflows:
 - docker compose
 - docker
 
+## docker compose workflow 
+
 ## Docker workflow 
 
 ### pull docker images for influxdb, telegraf, grafana 
@@ -128,8 +134,6 @@ Verify
 ```
 $ docker ps 
 ```
-
-## docker compose workflow 
 
 # Demo
 
