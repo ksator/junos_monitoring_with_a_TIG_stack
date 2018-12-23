@@ -246,6 +246,14 @@ Run this command to show system connections activity
 ```
 jcluser@MX1> show system connections
 ```
+
+### sensors
+
+Run this command to check the sensors on Junos
+```
+jcluser@vMX1> show agent sensors
+```
+
 ### packages 
 The Junos packages `openconfig` and `na telemetry` are required for Openconfig telemetry.  
 Starting with Junos OS Release 18.3R1, the Junos OS image includes them, therefore, you do not need anymore to install them separately on your device.  
