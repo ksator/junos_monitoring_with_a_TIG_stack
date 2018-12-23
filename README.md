@@ -15,7 +15,7 @@ When Grafana starts, it will insert all dashboards json files available in the p
 
 The directory [dashboards](dashboards) has dashboards json files  
 
-The yaml file [datasources.yaml](datasources.yaml) is config file.  
+The yaml file [datasource.yaml](datasource.yaml) is config file.  
 This file contains a list of datasources that will be added during Grafana start up.  
  
 The file [meta.db](meta.db) contains the influxdb databases and users. 
