@@ -8,9 +8,9 @@ For more information about Junos monitoring with telegraf and influxdb you can r
 
 ## Telegraf
 
-telegraf is an open source collector written in GO.
-Telegraf collects data and writes them into a database.
-It is plugin-driven (it has input plugins, output plugins, ...) 
+Telegraf is an open source collector written in GO.  
+Telegraf collects data and writes them into a database.  
+It is plugin-driven (it has input plugins, output plugins, ...)  
 
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
