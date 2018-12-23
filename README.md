@@ -7,23 +7,37 @@ For more information about Junos monitoring with telegraf and influxdb you can r
 - https://github.com/ksator/collect_snmp_with_telegraf 
 
 ## Telegraf
+
+telegraf is an open source collector written in GO.
+Telegraf collects data and writes them into a database.
+It is plugin-driven (it has input plugins, output plugins, ...) 
+
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
 You can also use the telegraf `snmp` input plugin to monitor Junos.   
 
+## Influxdb
+
+Influxdb is an open source time series database written in GO.  
+
+The file [meta.db](meta.db) contains the influxdb databases and users. 
+It has a database `juniper` and a user `juniper` with a password `juniper` 
+
 ## Grafana 
+
+Grafana is an open source tool used to visualize time series data.  
+It supports InfluxDB and other backends.  
+It runs as a web application.  
+It is written in GO.  
+
+The yaml file [datasource.yaml](datasource.yaml) is config file.  
+This file contains a list of datasources that will be added during Grafana start up.  
+
 The yaml file [dashboards.yaml](dashboards.yaml) is a config file.  
 This file contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.  
 When Grafana starts, it will insert all dashboards json files available in the paths configured in [dashboards.yaml](dashboards.yaml)  
 
 The directory [dashboards](dashboards) has dashboards json files  
-
-The yaml file [datasource.yaml](datasource.yaml) is config file.  
-This file contains a list of datasources that will be added during Grafana start up.  
-
-## Influxdb
-The file [meta.db](meta.db) contains the influxdb databases and users. 
-It has a database `juniper` and a user `juniper` with a password `juniper` 
 
 # Requirements to use this repository
 
@@ -40,7 +54,7 @@ Starting with Junos OS Release 18.3R1:
 - the Junos OS image includes the ```Network Agent```, therefore, you do not need anymore to install the ```network agent``` separately on your device.  
 
 If you are using an older Junos release, it is required to install these two packages. 
-
+Run this command to verify: 
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
 Junos: 18.2R1.9
@@ -50,19 +64,19 @@ JUNOS Openconfig [0.0.0.10-1]
 
 ### Junos configuration
 
-This is required if you use the telegraf input plugin `snmp`
+This sort of configuration is required if you use the telegraf input plugin `snmp`
 ```
 jcluser@vMX-1> show configuration snmp
 community public;
 ```
-This is required if you use the telegraf input plugin `jti_openconfig_telemetry`
+This sort of configuration is required if you use the telegraf input plugin `jti_openconfig_telemetry`
 ```
 jcluser@vMX-1> show configuration system services extension-service | display set
 set system services extension-service request-response grpc clear-text port 32768
 set system services extension-service request-response grpc skip-authentication
 set system services extension-service notification allow-clients address 0.0.0.0/0
 ```
-This is required if you use NETCONF
+This sort of configuration is required if you use NETCONF
 ```
 jcluser@vMX-1> show configuration system services netconf | display set
 set system services netconf ssh
