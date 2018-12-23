@@ -19,7 +19,7 @@ The yaml file [datasource.yaml](datasource.yaml) is config file.
 This file contains a list of datasources that will be added during Grafana start up.  
  
 The file [meta.db](meta.db) contains the influxdb databases and users. 
-It has a database called juniper and a user 
+It has a database `juniper` and a user `juniper` with a password `juniper` 
 
 # Requirements to use this repository
 
