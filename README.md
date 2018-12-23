@@ -20,7 +20,7 @@ You can also use the telegraf `snmp` input plugin to monitor Junos.
 
 Influxdb is an open source time series database written in GO.  
 
-The file [meta.db](meta.db) contains the influxdb databases and users. 
+The file [meta.db](meta.db) contains the influxdb databases and users.  
 It has a database `juniper` and a user `juniper` with a password `juniper` 
 
 ## Grafana 
@@ -84,7 +84,13 @@ set system services netconf ssh
 
 # How to use this repository
 
-## pull docker images for influxdb, telegraf, grafana 
+There are two differents workflows: 
+- docker compose
+- docker
+
+## Docker workflow 
+
+### pull docker images for influxdb, telegraf, grafana 
 ```
 $ docker pull influxdb:1.7.2
 ```
@@ -104,7 +110,7 @@ $ docker image telegraf
 ```
 $ docker image influxdb
 ```
-## Instanciate containers 
+### Instanciate containers 
 ```
 $ docker run -d --name influxdb \
 -p 8083:8083 -p 8086:8086 \
@@ -128,5 +134,11 @@ Verify
 ```
 $ docker ps 
 ```
+
+## docker compose workflow 
+
+# Troubleshooting
+
+# Demo
 
 
