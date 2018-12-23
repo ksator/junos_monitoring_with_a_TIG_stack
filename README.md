@@ -6,9 +6,12 @@ For more information about Junos monitoring with telegraf and influxdb you can r
 - https://github.com/ksator/collect_telemetry_from_junos_with_telegraf 
 - https://github.com/ksator/collect_snmp_with_telegraf 
 
+## Telegraf
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
-It uses the `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)
+It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
+You can also use the telegraf `snmp` input plugin to monitor Junos.   
 
+## Grafana 
 The yaml file [dashboards.yaml](dashboards.yaml) is a config file.  
 This file contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.  
 When Grafana starts, it will insert all dashboards json files available in the paths configured in [dashboards.yaml](dashboards.yaml)  
@@ -17,7 +20,8 @@ The directory [dashboards](dashboards) has dashboards json files
 
 The yaml file [datasource.yaml](datasource.yaml) is config file.  
 This file contains a list of datasources that will be added during Grafana start up.  
- 
+
+## Influxdb
 The file [meta.db](meta.db) contains the influxdb databases and users. 
 It has a database `juniper` and a user `juniper` with a password `juniper` 
 
