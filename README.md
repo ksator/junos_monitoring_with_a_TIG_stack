@@ -8,6 +8,10 @@ Telegraf is an open source collector written in GO.
 Telegraf collects data and writes them into a database.  
 It is plugin-driven (it has input plugins, output plugins, ...)  
 
+To monitor Junos, we can use the telegraf input plugin `jti_openconfig_telemetry` (grpc client to collect telemetry on junos devices) and the telegraf input plugin `snmp`  
+
+Telegraf has an output plugin to write the data collected to Influxdb. It supports others output plugins as well. 
+
 # About Influxdb
 
 Influxdb is an open source time series database written in GO.  
@@ -18,6 +22,13 @@ Grafana is an open source tool used to visualize time series data.
 It supports InfluxDB and other backends.  
 It runs as a web application.  
 It is written in GO.  
+
+# About a TIG stack
+
+A TIG stack uses: 
+- Telegraf to collect data and to write the collected data in Influxdb
+- Influxdb to store the data collected
+- Grafana to visualize the data stored in Influxdb
 
 # Looking for more information about Junos monitoring with telegraf and influxdb 
 
