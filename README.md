@@ -135,6 +135,8 @@ $ docker ps
 
 ## docker compose workflow 
 
+# Demo
+
 # Troubleshooting
 
 ## telegraf
@@ -146,6 +148,10 @@ $ docker logs telegraf
 start a shell session in the telegraf container
 ```
 $ docker exec -it telegraf bash
+```
+Run this command to print the telegraf version
+```
+# telegraf --version
 ```
 verify the telegraf configuration file
 ```
@@ -170,22 +176,31 @@ run this command to read the influxdb configuration file
 ```
 # more /etc/influxdb/influxdb.conf
 ```
-query the database
+Run the command influx
 ```
 # influx
 Connected to http://localhost:8086 version 1.7.2
 InfluxDB shell version: 1.7.2
 Enter an InfluxQL query
+```
+To list the users, run this command.
+```
 > show users
 user    admin
 ----    -----
 juniper false
+```
+To list the databases, run this command.
+```
 > show databases
 name: databases
 name
 ----
 _internal
 juniper
+```
+Run this command to list measurements 
+```
 > use juniper
 Using database juniper
 > show measurements
@@ -196,7 +211,7 @@ name
 /network-instances/network-instance/protocols/protocol/bgp/
 >
 ```
-Sessions state on device 100.123.1.0, returns the most recent datapoint
+Sessions state on device 100.123.1.0. This query returns the most recent datapoint
 ```
 > SELECT "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/session-state" from "/network-instances/network-instance/protocols/protocol/bgp/" WHERE device='100.123.1.0' ORDER BY DESC LIMIT 1
 name: /network-instances/network-instance/protocols/protocol/bgp/
@@ -229,7 +244,24 @@ $ docker logs grafana
 ```
 
 ## Junos
+### 
+### YANG modules on Junos
 
-# Demo
-
+Run this command to show YANG packages installed on Junos: 
+```
+jcluser@vMX-1> show system yang package
+```
+Run this command to list YANG modules available on Junos: 
+```
+jcluser@vMX-1> file list /opt/yang-pkg/junos-openconfig/yang/
+```
+Run this command to know which `reference` of a YANG module is used on a Junos device.   
+Example with openconfig-interfaces.yang YANG module
+```
+jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/openconfig-interfaces.yang
+```
+Run this command to understand which YANG deviations are used on a Junos device:
+```
+jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/jnx-openconfig-dev.yang
+```
 
