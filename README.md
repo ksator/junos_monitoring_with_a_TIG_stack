@@ -50,14 +50,20 @@ The directory [dashboards](dashboards) has dashboards json files
 # Requirements to use this repository
 
 ## Docker 
+
 you need to install docker.  
+This is not covered in this repository
+
+## Docker compose 
+
+you need to install docker compose.  
 This is not covered in this repository
 
 ## Junos
 
 In order to collect data from Junos using openconfig telemetry, the devices require the Junos packages ```openconfig``` and ```network agent```  
 Starting with Junos OS Release 18.3R1, the Junos OS image includes these 2 packages; therefore, you do not need anymore to install them separately on your device.  
-If you are using an older Junos release, it is required to install these two packages.  
+If you are using an older Junos release, it is required to install these two packages separately.  
 Run this command to verify: 
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
@@ -92,7 +98,7 @@ You can use of one these two differents workflows:
 - docker compose workflow 
 - docker workflow 
 
-## docker compose workflow 
+## Docker compose workflow 
 
 ## Docker workflow 
 
@@ -125,26 +131,31 @@ $ docker image
 
 #### influxdb container
 
-Run this command to instanciate an influxdb container with the file [meta.db](meta.db). 
-The influxdb container will have a database `juniper` and a user `juniper` with a password `juniper` 
+Run this command to instanciate an influxdb container with the file [meta.db](meta.db).  
+The influxdb container will have a database `juniper` and a user `juniper` with a password `juniper`  
+
 ```
 $ docker run -d --name influxdb \
 -p 8083:8083 -p 8086:8086 \
 -v $PWD/meta.db:/var/lib/influxdb/meta/meta.db \
 influxdb:1.7.2
 ```
+
 #### Telegraf container
-Run this command to instanicate a telegraf container with the telegraf configuration file [telegraf.conf](telegraf.conf)   
-It will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
-It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
+
+Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf.conf](telegraf.conf)   
+This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
+This container will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
 
 ```
 $ docker run -d --name telegraf \
 -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
 telegraf:1.9.1
 ```
+
 #### Grafana container
-Run this command to instanicate a Grafana container.  
+
+Run this command to instanciate a Grafana container.  
 It will load all dashboards json files from the directory [dashboards](dashboards) has dashboards json files.   
 It will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
 
@@ -156,6 +167,7 @@ $ docker run -d --name grafana \
 -v $PWD/dashboards:/var/tmp/dashboards \
 grafana/grafana:5.4.2
 ```
+
 #### Verify  
 
 Run this command to list running containers
@@ -292,6 +304,7 @@ jcluser@vMX1> show agent sensors
 ```
 
 ### packages 
+
 The Junos packages `openconfig` and `na telemetry` are required for Openconfig telemetry.  
 Starting with Junos OS Release 18.3R1, the Junos OS image includes them, therefore, you do not need anymore to install them separately on your device.  
 If your devices are running an older Junos release, you need to install them separately.  
@@ -300,6 +313,7 @@ Run this command to validate your Junos devices are using these 2 packages:
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
 ```
+
 ### configuration 
 
 Run these commands to verify your Junos devices are running an appropriate configuration for snmp and openconfig telemetry
