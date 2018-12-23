@@ -1,6 +1,6 @@
 # About this repository 
 
-How to monitor Junos devices using a TIG (Telegraf-Influxdb-Grafana) stack.  
+How to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).  
 
 # About Telegraf
 
@@ -88,13 +88,24 @@ set system services netconf ssh
 
 # How to use this repository
 
-There are two differents workflows: 
-- docker compose
-- docker
+You can use of one these two differents workflows: 
+- docker compose workflow 
+- docker workflow 
 
 ## docker compose workflow 
 
 ## Docker workflow 
+
+### clone the repository
+```
+$ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
+$ cd junos_monitoring_with_a_TIG_stack
+```
+
+### Update the telegraf input plugin [telegraf.conf](telegraf.conf)
+```
+$ vi telegraf.conf
+```
 
 ### pull docker images for influxdb, telegraf, grafana 
 ```
@@ -111,29 +122,51 @@ verify
 $ docker image 
 ```
 ### Instanciate containers 
+
+#### influxdb container
+
+Run this command to instanciate an influxdb container with the file [meta.db](meta.db). 
+The influxdb container will have a database `juniper` and a user `juniper` with a password `juniper` 
 ```
 $ docker run -d --name influxdb \
 -p 8083:8083 -p 8086:8086 \
 -v $PWD/meta.db:/var/lib/influxdb/meta/meta.db \
 influxdb:1.7.2
 ```
+#### Telegraf container
+Run this command to instanicate a telegraf container with the telegraf configuration file [telegraf.conf](telegraf.conf)   
+It will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
+It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
+
 ```
 $ docker run -d --name telegraf \
 -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
 telegraf:1.9.1
 ```
+#### Grafana container
+Run this command to instanicate a Grafana container.  
+It will load all dashboards json files from the directory [dashboards](dashboards) has dashboards json files.   
+It will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
+
 ```
 $ docker run -d --name grafana \
--p 9081:3000 \
+-p 3000:3000 \
 -v $PWD/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro \
 -v $PWD/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro \
 -v $PWD/dashboards:/var/tmp/dashboards \
 grafana/grafana:5.4.2
 ```
-Verify 
+#### Verify  
+
+Run this command to list running containers
 ```
 $ docker ps 
 ```
+#### Use Grafana GUI 
+You can now use the Grafana GUI `http://host_ip_address:3000`.  
+The default username and password are admin/admin.  
+You should see the dashboards from the directory [dashboards](dashboards)  
+You can create your own dashboards.  
 
 # Demo
 
