@@ -51,12 +51,8 @@ This is not covered in this repository
 
 ## Junos
 
-In order to collect data from Junos using openconfig telemetry, the devices require the Junos packages ```openconfig``` and ```network agent```
-
-Starting with Junos OS Release 18.3R1: 
-- the Junos OS image includes the ```OpenConfig``` package; therefore, you do not need anymore to install ```OpenConfig``` separately on your device.  
-- the Junos OS image includes the ```Network Agent```, therefore, you do not need anymore to install the ```network agent``` separately on your device.  
-
+In order to collect data from Junos using openconfig telemetry, the devices require the Junos packages ```openconfig``` and ```network agent```  
+Starting with Junos OS Release 18.3R1, the Junos OS image includes these 2 packages; therefore, you do not need anymore to install them separately on your device.  
 If you are using an older Junos release, it is required to install these two packages.  
 Run this command to verify: 
 ```
