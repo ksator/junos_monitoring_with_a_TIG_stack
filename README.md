@@ -57,7 +57,7 @@ Starting with Junos OS Release 18.3R1:
 - the Junos OS image includes the ```OpenConfig``` package; therefore, you do not need anymore to install ```OpenConfig``` separately on your device.  
 - the Junos OS image includes the ```Network Agent```, therefore, you do not need anymore to install the ```network agent``` separately on your device.  
 
-If you are using an older Junos release, it is required to install these two packages. 
+If you are using an older Junos release, it is required to install these two packages.  
 Run this command to verify: 
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
