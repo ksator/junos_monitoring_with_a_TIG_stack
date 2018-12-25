@@ -45,7 +45,6 @@ It will create the influxdb database `juniper` and the influxdb user `juniper` w
 
 You can also use the telegraf `snmp` input plugin to monitor Junos.   
 
-
 ## Grafana
 
 The file [datasource.yaml](datasource.yaml) is config file.  
@@ -57,26 +56,110 @@ When Grafana starts, it will insert all dashboards json files available in the p
 
 The directory [dashboards](dashboards) has dashboards json files  
 
+## docker-compose
+
+The docker-compose file [docker-compose.yml](docker-compose.yml) can be used to start a TIG stack.  
+
 # Requirements to use this repository
 
 ## Docker 
 
-you need to install docker.  
-This is not covered in this repository.  
+You need to install docker.  
 
-Run this command to verify:  
+Check if Docker is already installed 
 ```
 $ docker --version
 ```
+
+If it was not already installed, install it, here's how to install in on Ubuntu 16.04:  
+```
+$ sudo apt-get update
+```
+```
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+```
+```
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+```
+```
+$ sudo apt-get update
+```
+```
+$ sudo apt-get install docker-ce
+```
+```
+$ sudo docker run hello-world
+```
+```
+$ sudo groupadd docker
+```
+```
+$ sudo usermod -aG docker $USER
+```
+
+Exit the ssh session to your ubuntu and open an new ssh session to your ubuntu and run these commands to verify you installed Docker properly:  
+```
+$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+```
+```
+$ docker --version
+Docker version 18.03.1-ce, build 9ee9f40
+```
+
+
 ## Docker compose 
 
 you need to install docker compose.  
-This is not covered in this repository  
 
-Run this command to verify:  
+Check if docker compose is already installed 
 ```
 $ docker-compose --version
 ```
+
+If it was not already installed, install it, here's how to install in on Ubuntu 16.04:  
+```
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+```
+Apply executable permissions to the binary:
+```
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+Verify
+```
+$ docker-compose --version
+```
+
 
 ## Junos
 
