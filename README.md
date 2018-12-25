@@ -41,11 +41,10 @@ you can refer to these repositories:
 ## Telegraf
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
+It will create the influxdb database `juniper` and the user `juniper` with a password `juniper`  
+
 You can also use the telegraf `snmp` input plugin to monitor Junos.   
 
-## Influxdb
-The file [meta.db](meta.db) contains the influxdb databases and users.  
-It has a database `juniper` and a user `juniper` with a password `juniper` 
 
 ## Grafana
 
@@ -142,13 +141,11 @@ $ docker image
 
 #### influxdb container
 
-Run this command to instanciate an influxdb container with the file [meta.db](meta.db).  
-The influxdb container will have a database `juniper` and a user `juniper` with a password `juniper`  
+Run this command to instanciate an influxdb container  
 
 ```
 $ docker run -d --name influxdb \
 -p 8083:8083 -p 8086:8086 \
--v $PWD/meta.db:/var/lib/influxdb/meta/meta.db \
 influxdb:1.7.2
 ```
 
@@ -156,7 +153,8 @@ influxdb:1.7.2
 
 Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf.conf](telegraf.conf)   
 This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
-This container will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
+It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`    
+It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
 
 ```
 $ docker run -d --name telegraf \
