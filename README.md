@@ -191,7 +191,7 @@ You can create your own dashboards.
 
 # Demo
 
-# Troubleshooting
+# Troubleshooting guide
 
 ## telegraf
 
