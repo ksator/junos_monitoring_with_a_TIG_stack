@@ -130,8 +130,21 @@ $ vi telegraf.conf
 
 ### Start containers
 
-Run this command to start containers  
-This will use the [docker-compose.yml](docker-compose.yml) file.  
+Run this command to start containers using the [docker-compose.yml](docker-compose.yml) file.  
+This will pull the required docker images.  
+This will instanciate 3 containers (Telegraf, Influxdb, Grafana)  
+The 3 containers will be connected to same network  
+
+Telegraf will be instanciate with the telegraf configuration file [telegraf.conf](telegraf.conf)   
+It will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
+It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`    
+It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
+
+The grafana container will load all dashboards json files from the directory [dashboards](dashboards)  
+It will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
+
+
+
 ```
 $ docker-compose -f docker-compose.yml up -d
 ```
@@ -158,6 +171,20 @@ You can create your own dashboards.
 Run this command to stop and remove containers and networks 
 ```
 $ docker-compose -f docker-compose.yml down
+```
+
+Run these commands to verify
+```
+$ docker-compose ps
+```
+```
+$ docker ps
+```
+```
+$ docker ps -a
+```
+```
+$ docker network ls
 ```
 
 ## Docker workflow 
