@@ -117,6 +117,49 @@ You can use of one these two differents workflows:
 
 ## Docker compose workflow 
 
+### clone the repository
+```
+$ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
+$ cd junos_monitoring_with_a_TIG_stack
+```
+
+### Update the telegraf input plugin [telegraf.conf](telegraf.conf)
+```
+$ vi telegraf.conf
+```
+
+### Start containers
+
+Run this command to start containers  
+This will use the [docker-compose.yml](docker-compose.yml) file.  
+```
+$ docker-compose -f docker-compose.yml up -d
+```
+Run this command to list containers
+```
+$ docker-compose ps
+```
+```
+$ docker ps
+```
+Run this command to list networks
+```
+$ docker network ls
+```
+
+### Use Grafana GUI 
+You can now use the Grafana GUI `http://host_ip_address:3000`.  
+The default username and password are admin/admin.  
+You should see the dashboards from the directory [dashboards](dashboards)  
+You can create your own dashboards.  
+
+### stop and remove containers and networks 
+
+Run this command to stop and remove containers and networks 
+```
+$ docker-compose -f docker-compose.yml down
+```
+
 ## Docker workflow 
 
 ### clone the repository
@@ -212,7 +255,7 @@ Run this command to display detailed information on the tig network
 $ docker network inspect tig
 ```
 
-#### Use Grafana GUI 
+### Use Grafana GUI 
 You can now use the Grafana GUI `http://host_ip_address:3000`.  
 The default username and password are admin/admin.  
 You should see the dashboards from the directory [dashboards](dashboards)  
