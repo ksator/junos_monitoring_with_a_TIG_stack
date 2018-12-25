@@ -71,7 +71,7 @@ Check if Docker is already installed
 $ docker --version
 ```
 
-If it was not already installed, install it, here's how to install in on Ubuntu 16.04:  
+If it was not already installed, install it. Here's how to install in on Ubuntu 16.04:  
 ```
 $ sudo apt-get update
 ```
@@ -147,7 +147,7 @@ Check if docker compose is already installed
 $ docker-compose --version
 ```
 
-If it was not already installed, install it, here's how to install in on Ubuntu 16.04:  
+If it was not already installed, install it. Here's how to install in on Ubuntu 16.04:  
 ```
 $ sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 ```
