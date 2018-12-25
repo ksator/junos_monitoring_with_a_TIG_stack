@@ -160,6 +160,7 @@ $ docker network ls
 #### influxdb container
 
 Run this command to instanciate an influxdb container  
+The Influxdb container will be connected to the network tig.  
 
 ```
 $ docker run -d --name influxdb \
@@ -171,6 +172,7 @@ influxdb:1.7.2
 #### Telegraf container
 
 Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf.conf](telegraf.conf)   
+The Telegraf container will be connected to the network tig.  
 This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
 It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`    
 It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
@@ -185,8 +187,9 @@ telegraf:1.9.1
 #### Grafana container
 
 Run this command to instanciate a Grafana container.  
-It will load all dashboards json files from the directory [dashboards](dashboards) has dashboards json files.   
-It will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
+The Grafana container will be connected to the network tig.  
+The container will load all dashboards json files from the directory [dashboards](dashboards)  
+The container will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
 
 ```
 $ docker run -d --name grafana \
