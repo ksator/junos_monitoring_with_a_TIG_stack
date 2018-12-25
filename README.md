@@ -144,7 +144,16 @@ verify
 ```
 $ docker image 
 ```
-###
+### Create a network 
+
+Create a network 
+```
+$ docker network create tig
+```
+verify
+```
+$ docker network ls
+```
 
 ### Instanciate containers 
 
@@ -155,6 +164,7 @@ Run this command to instanciate an influxdb container
 ```
 $ docker run -d --name influxdb \
 -p 8083:8083 -p 8086:8086 \
+--network=tig \
 influxdb:1.7.2
 ```
 
@@ -168,6 +178,7 @@ It will store the data collected in the database `juniper` of the influxdb conta
 ```
 $ docker run -d --name telegraf \
 -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
+--network=tig \
 telegraf:1.9.1
 ```
 
@@ -183,6 +194,7 @@ $ docker run -d --name grafana \
 -v $PWD/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro \
 -v $PWD/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro \
 -v $PWD/dashboards:/var/tmp/dashboards \
+--network=tig \
 grafana/grafana:5.4.2
 ```
 
@@ -192,6 +204,11 @@ Run this command to list running containers
 ```
 $ docker ps 
 ```
+Run this command to display detailed information on the tig network
+```
+$ docker network inspect tig
+```
+
 #### Use Grafana GUI 
 You can now use the Grafana GUI `http://host_ip_address:3000`.  
 The default username and password are admin/admin.  
