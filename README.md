@@ -41,19 +41,19 @@ you can refer to these repositories:
 ## Telegraf
 The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
-It will create the influxdb database `juniper` and the user `juniper` with a password `juniper`  
+It will create the influxdb database `juniper` and the influxdb user `juniper` with a password `juniper`  
 
 You can also use the telegraf `snmp` input plugin to monitor Junos.   
 
 
 ## Grafana
 
-The yaml file [datasource.yaml](datasource.yaml) is config file.  
-This file contains a list of datasources that will be added during Grafana start up.  
+The file [datasource.yaml](datasource.yaml) is config file.  
+It contains a list of datasources that will be added during Grafana start up.  
 
-The yaml file [dashboards.yaml](dashboards.yaml) is a config file.  
-This file contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.  
-When Grafana starts, it will insert all dashboards json files available in the paths configured in [dashboards.yaml](dashboards.yaml)  
+The file [dashboards.yaml](dashboards.yaml) is a config file.  
+It contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.  
+When Grafana starts, it will insert all dashboards json files available in the paths configured in the file [dashboards.yaml](dashboards.yaml)  
 
 The directory [dashboards](dashboards) has dashboards json files  
 
@@ -62,24 +62,31 @@ The directory [dashboards](dashboards) has dashboards json files
 ## Docker 
 
 you need to install docker.  
-This is not covered in this repository
+This is not covered in this repository.  
 
+Run this command to verify:  
+```
+$ docker --version
+```
 ## Docker compose 
 
 you need to install docker compose.  
-This is not covered in this repository
+This is not covered in this repository  
+
+Run this command to verify:  
+```
+$ docker-compose --version
+```
 
 ## Junos
 
 In order to collect data from Junos using openconfig telemetry, the devices require the Junos packages ```openconfig``` and ```network agent```  
 Starting with Junos OS Release 18.3R1, the Junos OS image includes these 2 packages; therefore, you do not need anymore to install them separately on your device.  
 If you are using an older Junos release, it is required to install these two packages separately.  
+
 Run this command to verify: 
 ```
 jcluser@vMX1> show version | match "Junos:|openconfig|na telemetry"
-Junos: 18.2R1.9
-JUNOS na telemetry [18.2R1-S3.2-C1]
-JUNOS Openconfig [0.0.0.10-1]
 ```
 
 ### Junos configuration
@@ -137,6 +144,8 @@ verify
 ```
 $ docker image 
 ```
+###
+
 ### Instanciate containers 
 
 #### influxdb container
