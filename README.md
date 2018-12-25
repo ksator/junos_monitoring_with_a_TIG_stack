@@ -1,6 +1,6 @@
 # About this repository 
 
-How to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).  
+This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).   
 
 # About Telegraf
 
@@ -230,6 +230,10 @@ It will use the influxdb container as indicated in the [datasource.yaml](datasou
 
 ```
 $ docker-compose -f docker-compose.yml up -d
+```
+Run this command to list docker images
+```
+$ docker images
 ```
 Run this command to list containers
 ```
