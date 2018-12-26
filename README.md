@@ -1,6 +1,7 @@
 # About this repository 
 
 This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).   
+It currently supports data collection on Junos using SNMP and GRPC.  
 
 # About Telegraf
 
@@ -375,7 +376,11 @@ The default username and password are admin/admin.
 You should see the dashboards from the directory [dashboards](dashboards)  
 You can create your own dashboards.  
 
-# Demo
+# Grafana screenshots
+
+![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)  
+
+
 
 # Troubleshooting guide
 
