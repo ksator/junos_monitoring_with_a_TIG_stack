@@ -380,7 +380,13 @@ You can create your own dashboards.
 
 ![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)  
 
+![BGP_sessions_state_established.png](resources/BGP_sessions_state_established.png)  
 
+![transitions_to_bgp_established.png](resources/transitions_to_bgp_established.png)  
+
+![BGP_prefixes_received.png](resources/BGP_prefixes_received.png)  
+
+![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)  
 
 # Troubleshooting guide
 
