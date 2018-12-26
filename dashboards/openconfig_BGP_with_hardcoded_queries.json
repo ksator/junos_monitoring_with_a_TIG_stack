@@ -56,7 +56,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "device 100.123.1.0",
+          "alias": "device 172.25.90.66",
           "groupBy": [
             {
               "params": [
@@ -94,7 +94,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -428,7 +428,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "device 100.123.1.0",
+          "alias": "device 172.25.90.66",
           "groupBy": [
             {
               "params": [
@@ -466,7 +466,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1446,7 +1446,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "description": "The number of transitions to the BGP session state established .    \nHardcoded for device 100.123.1.0 only  \nThe  neighbors are hardcoded in the queries",
+      "description": "The number of transitions to the BGP session state established .    \nHardcoded for device 172.25.90.66 only  \nThe  neighbors are hardcoded in the queries",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -1517,7 +1517,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1567,7 +1567,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1617,7 +1617,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1667,7 +1667,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1682,7 +1682,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Transitions to the BGP session state established (on device 100.123.1.0 only)",
+      "title": "Transitions to the BGP session state established (on device 172.25.90.66 only)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1724,7 +1724,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "description": "The number of BGP prefixes received by 100.123.1.0.  \nHis neighbors are hardcoded.",
+      "description": "The number of BGP prefixes received by 172.25.90.66.  \nHis neighbors are hardcoded.",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -1794,7 +1794,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             }
           ]
         },
@@ -1837,7 +1837,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1886,7 +1886,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1935,7 +1935,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1984,7 +1984,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -1999,7 +1999,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "BGP prefixes received on device 100.123.1.0",
+      "title": "BGP prefixes received on device 172.25.90.66",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2041,7 +2041,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "description": "The number of BGP prefixes sent by the device 100.123.1.0.   \nHis neighbors are hardcoded.",
+      "description": "The number of BGP prefixes sent by the device 172.25.90.66.   \nHis neighbors are hardcoded.",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -2111,7 +2111,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -2160,7 +2160,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -2209,7 +2209,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -2258,7 +2258,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "100.123.1.0"
+              "value": "172.25.90.66"
             },
             {
               "condition": "AND",
@@ -2273,7 +2273,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "BGP prefixes sent by  device 100.123.1.0",
+      "title": "BGP prefixes sent by  device 172.25.90.66",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2320,8 +2320,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "100.123.1.0",
-          "value": "100.123.1.0"
+          "text": "172.25.90.66",
+          "value": "172.25.90.66"
         },
         "datasource": "influxdb",
         "definition": "SHOW TAG VALUES FROM  \"/network-instances/network-instance/protocols/protocol/bgp/\" with KEY = \"device\"",
@@ -2370,8 +2370,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "100.123.1.0",
-          "value": "100.123.1.0"
+          "text": "172.25.90.66",
+          "value": "172.25.90.66"
         },
         "hide": 0,
         "includeAll": false,
@@ -2381,8 +2381,8 @@
         "options": [
           {
             "selected": true,
-            "text": "100.123.1.0",
-            "value": "100.123.1.0"
+            "text": "172.25.90.66",
+            "value": "172.25.90.66"
           },
           {
             "selected": false,
@@ -2395,7 +2395,7 @@
             "value": "100.123.1.2"
           }
         ],
-        "query": "100.123.1.0, 100.123.1.1, 100.123.1.2",
+        "query": "172.25.90.66, 100.123.1.1, 100.123.1.2",
         "skipUrlSync": false,
         "type": "custom"
       },

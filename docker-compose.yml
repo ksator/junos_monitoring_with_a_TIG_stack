@@ -1,3 +1,4 @@
+---
 version: '2'
 
 networks:
@@ -23,6 +24,16 @@ services:
     networks:
       - tig
 
+  telegraf.snmp:
+    image: telegraf-snmp
+    container_name: telegraf-snmp
+    volumes:
+      - $PWD/telegraf.snmp.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - "influxdb"
+    networks:
+      - tig
+
   grafana:
     image: grafana/grafana:5.4.2
     container_name: grafana
@@ -36,4 +47,3 @@ services:
       - "telegraf"
     networks:
       - tig
-

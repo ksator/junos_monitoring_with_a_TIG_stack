@@ -56,8 +56,8 @@
       "scopedVars": {
         "devices": {
           "selected": true,
-          "text": "100.123.1.0",
-          "value": "100.123.1.0"
+          "text": "172.25.90.66",
+          "value": "172.25.90.66"
         }
       },
       "seriesOverrides": [],
@@ -85,7 +85,7 @@
           "measurement": "/interfaces/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT count(\"/interfaces/interface/state/oper-status\") FROM /interfaces/ WHERE (\"device\" = '100.123.1.0' AND \"/interfaces/interface/@name\" = 'ge-0/0/0' AND \"/interfaces/interface/state/oper-status\" = 'UP') AND $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT count(\"/interfaces/interface/state/oper-status\") FROM /interfaces/ WHERE (\"device\" = '172.25.90.66' AND \"/interfaces/interface/@name\" = 'ge-0/0/0' AND \"/interfaces/interface/state/oper-status\" = 'UP') AND $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": false,
           "refId": "G",
           "resultFormat": "time_series",
@@ -149,7 +149,7 @@
           "measurement": "/interfaces/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT count(\"/interfaces/interface/state/oper-status\") FROM /interfaces/ WHERE (\"device\" = '100.123.1.0' AND \"/interfaces/interface/@name\" = 'ge-0/0/0' AND \"/interfaces/interface/state/oper-status\" = 'UP') AND $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT count(\"/interfaces/interface/state/oper-status\") FROM /interfaces/ WHERE (\"device\" = '172.25.90.66' AND \"/interfaces/interface/@name\" = 'ge-0/0/0' AND \"/interfaces/interface/state/oper-status\" = 'UP') AND $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": false,
           "refId": "H",
           "resultFormat": "time_series",
@@ -213,7 +213,7 @@
           "measurement": "/interfaces/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT count(\"/interfaces/interface/state/oper-status\") FROM /interfaces/ WHERE (\"device\" = '100.123.1.0' AND \"/interfaces/interface/@name\" = 'ge-0/0/0' AND \"/interfaces/interface/state/oper-status\" = 'UP') AND $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT count(\"/interfaces/interface/state/oper-status\") FROM /interfaces/ WHERE (\"device\" = '172.25.90.66' AND \"/interfaces/interface/@name\" = 'ge-0/0/0' AND \"/interfaces/interface/state/oper-status\" = 'UP') AND $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -309,9 +309,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "100.123.1.0",
+          "text": "172.25.90.66",
           "value": [
-            "100.123.1.0"
+            "172.25.90.66"
           ]
         },
         "datasource": "influxdb",
