@@ -3,6 +3,19 @@
 This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).   
 It currently supports data collection on Junos using SNMP and GRPC.  
 
+Here are some Grafana screenshots, with data collected using Openconfig telemetry (GRPC) on Junos devices:  
+
+![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)  
+
+![BGP_sessions_state_established.png](resources/BGP_sessions_state_established.png)  
+
+![transitions_to_bgp_established.png](resources/transitions_to_bgp_established.png)  
+
+![BGP_prefixes_received.png](resources/BGP_prefixes_received.png)  
+
+![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)  
+
+
 # About Telegraf
 
 Telegraf is an open source collector written in GO.  
@@ -375,18 +388,6 @@ You can now use the Grafana GUI `http://host_ip_address:3000`.
 The default username and password are admin/admin.  
 You should see the dashboards from the directory [dashboards](dashboards)  
 You can create your own dashboards.  
-
-# Grafana screenshots
-
-![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)  
-
-![BGP_sessions_state_established.png](resources/BGP_sessions_state_established.png)  
-
-![transitions_to_bgp_established.png](resources/transitions_to_bgp_established.png)  
-
-![BGP_prefixes_received.png](resources/BGP_prefixes_received.png)  
-
-![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)  
 
 # Troubleshooting guide
 
