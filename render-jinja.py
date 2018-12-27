@@ -1,14 +1,15 @@
-"""Summary
+"""Render JINJA2 template
+
+Basic python script to render JINJA2 file using YAML file as an input
 
 Attributes:
-    confFile (TYPE): Description
-    options (TYPE): Description
-    parser (TYPE): Description
-    template (TYPE): Description
+    CONFFILE (TYPE): Output generated with OPTIONS.output
+    OPTIONS (TYPE): User defined entries
+    PARSER (TYPE): JINJA2 parser
+    TEMPLATE (TYPE): JINJA2 template
 """
 
 from pprint import pprint
-import os
 import argparse
 import yaml
 from jinja2 import Template
@@ -23,8 +24,10 @@ def display_help():
 # Manage cmdLine parameters.
 PARSER = argparse.ArgumentParser(description="Configuration Builder")
 PARSER.add_argument('-v', '--verbose', help='Increase Verbosity', action="store_true")
-PARSER.add_argument('-y', '--yaml', help='Provides YAML file to fill Jinja2 template, default=dict.yml', default='dict.yml')
-PARSER.add_argument('-t', '--template', help='template file, default=./template.j2', default='./template.j2')
+PARSER.add_argument('-y', '--yaml', help='Provides YAML file to fill Jinja2 template',
+                    default='dict.yml')
+PARSER.add_argument('-t', '--template', help='template file, default=./template.j2',
+                    default='./template.j2')
 PARSER.add_argument('-o', '--output', help='File to save rendered file', default="demo.conf")
 # Manage All options and construct array
 OPTIONS = PARSER.parse_args()
