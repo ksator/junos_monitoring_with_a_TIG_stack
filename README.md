@@ -45,54 +45,6 @@ A TIG stack uses:
 - Grafana to visualize the data stored in Influxdb
 
 # Looking for more information about Junos monitoring with telegraf and influxdb
-jcluser@ubuntu:~/junos_monitoring_with_a_TIG_stack$ cat README.md
-# About this repository
-
-This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).
-It currently supports data collection on Junos using SNMP and OpenConfig.
-
-Here are some Grafana screenshots, with data collected using Openconfig telemetry (GRPC) on Junos devices:
-
-![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)
-
-![BGP_sessions_state_established.png](resources/BGP_sessions_state_established.png)
-
-![transitions_to_bgp_established.png](resources/transitions_to_bgp_established.png)
-
-![BGP_prefixes_received.png](resources/BGP_prefixes_received.png)
-
-![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)
-
-
-# About Telegraf
-
-Telegraf is an open source collector written in GO.
-Telegraf collects data and writes them into a database.
-It is plugin-driven (it has input plugins, output plugins, ...)
-
-To monitor Junos, we can use the telegraf input plugin `jti_openconfig_telemetry` (grpc client to collect telemetry on junos devices) and the telegraf input plugin `snmp`
-
-Telegraf has an output plugin to write the data collected to Influxdb. It supports others output plugins as well.
-
-# About Influxdb
-
-Influxdb is an open source time series database written in GO.
-
-# About Grafana
-
-Grafana is an open source tool used to visualize time series data.
-It supports InfluxDB and other backends.
-It runs as a web application.
-It is written in GO.
-
-# About a TIG stack
-
-A TIG stack uses:
-- Telegraf to collect data and to write the collected data in Influxdb
-- Influxdb to store the data collected
-- Grafana to visualize the data stored in Influxdb
-
-# Looking for more information about Junos monitoring with telegraf and influxdb
 
 you can refer to these repositories:
 - https://github.com/ksator/collect_telemetry_from_junos_with_telegraf
@@ -325,7 +277,6 @@ $ make grafana-cli
 
 To exit the session, run the command `exit`
 
-
 ## Docker compose workflow
 
 ### clone the repository
@@ -437,7 +388,6 @@ $ docker network ls
 Run this command to stop and remove containers and networks
 ```
 $ docker-compose -f docker-compose.yml down
-```
 ```
 Run this command to list running containers
 ```
@@ -723,6 +673,5 @@ Run this command to understand which YANG deviations are used on a Junos device:
 ```
 jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/jnx-openconfig-dev.yang
 ```
-
 
 
