@@ -1,4 +1,5 @@
 # usage:
+# vi data.yml
 # python ./render-telegraf-configuration.py -h
 # python ./render-telegraf-configuration.py --help
 # python ./render-telegraf-configuration.py --output 'configs/telegraf-openconfig.conf' --template 'templates/telegraf-openconfig.j2' --yaml 'data.yml'
