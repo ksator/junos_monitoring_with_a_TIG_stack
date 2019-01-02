@@ -1,3 +1,9 @@
+build-telegraf-conf:
+	@echo "======================================================================"
+	@echo "Build telegraf configuration file from template"
+	@echo "======================================================================"
+	python ./render-telegraf-configuration.py -o 'configs/telegraf-openconfig.conf' -t 'templates/telegraf-openconfig.j2' -y 'data.yml'
+
 grafana-cli:
 	@echo "======================================================================"
 	@echo "start a shell session in the grafana container"
