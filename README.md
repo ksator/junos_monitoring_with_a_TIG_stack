@@ -58,7 +58,7 @@ The docker-compose file [docker-compose.yml](docker-compose.yml) can be used to 
 
 ## Makefile 
 
-The [Makefile](makefile) can be used to manage the TIG stack (create, start, stop, remove) as an alternative to docker-compose.
+The [Makefile](Makefile) can be used to manage the TIG stack (create, start, stop, remove) as an alternative to docker-compose.
 
 ## Junos 
 
