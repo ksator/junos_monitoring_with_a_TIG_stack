@@ -1,6 +1,20 @@
 # About this repository 
 
 This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).   
+It currently supports data collection on Junos using SNMP and OpenConfig.  
+
+Here are some Grafana screenshots, with data collected using Openconfig telemetry (GRPC) on Junos devices:  
+
+![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)  
+
+![BGP_sessions_state_established.png](resources/BGP_sessions_state_established.png)  
+
+![transitions_to_bgp_established.png](resources/transitions_to_bgp_established.png)  
+
+![BGP_prefixes_received.png](resources/BGP_prefixes_received.png)  
+
+![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)  
+
 
 # About Telegraf
 
@@ -39,7 +53,8 @@ you can refer to these repositories:
 # About the repository content
 
 ## Telegraf
-The file [telegraf.conf](telegraf.conf) is a telegraf configuration file.  
+
+The file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf) is a telegraf configuration file.  
 It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
 It will create the influxdb database `juniper` and the influxdb user `juniper` with a password `juniper`  
 
@@ -47,12 +62,12 @@ You can also use the telegraf `snmp` input plugin to monitor Junos.
 
 ## Grafana
 
-The file [datasource.yaml](datasource.yaml) is config file.  
+The file [datasource.yaml](configs/datasource.yaml) is config file.  
 It contains a list of datasources that will be added during Grafana start up.  
 
-The file [dashboards.yaml](dashboards.yaml) is a config file.  
+The file [dashboards.yaml](configs/dashboards.yaml) is a config file.  
 It contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.  
-When Grafana starts, it will insert all dashboards json files available in the paths configured in the file [dashboards.yaml](dashboards.yaml)  
+When Grafana starts, it will insert all dashboards json files available in the paths configured in the file [dashboards.yaml](configs/dashboards.yaml)  
 
 The directory [dashboards](dashboards) has dashboards json files  
 
@@ -194,9 +209,74 @@ set system services netconf ssh
 
 # How to use this repository
 
-You can use of one these two differents workflows: 
+You can use of one these differents workflows: 
+- make workflow
 - docker compose workflow 
 - docker workflow 
+
+## make
+
+### clone the repository
+```
+$ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
+$ cd junos_monitoring_with_a_TIG_stack
+```
+### Update the input plugin of the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
+```
+$ vi configs/telegraf-openconfig.conf
+```
+### Makefile
+
+There is a [Makefile](Makefile) at the root of the repository.  
+It uses docker and docker-compose commands.  
+
+
+#### Create and start containers
+
+run this command to:
+- create a docker network.  
+- pull the required docker images.  
+- instanciate 3 containers (Telegraf, Influxdb, Grafana)  
+- connect the 3 containers to same docker network  
+
+```
+$ make up
+```
+#### Stop the containers
+
+run this command to stop containers without removing them
+
+```
+$ make stop
+```
+#### Start the existing containers
+
+Run this command to start existing containers 
+```
+$ make start
+```
+#### stop and remove containers and networks
+
+Run this command to stop and remove containers and networks 
+```
+$ make down
+```
+
+#### cli
+
+To start a shell session in a container, run one of these commands: 
+```
+$ make telegraf-openconfig-cli
+```
+```
+$ make influxdb-cli
+```
+```
+$ make grafana-cli
+```
+
+To exit the session, run the command `exit`
+
 
 ## Docker compose workflow 
 
@@ -206,25 +286,26 @@ $ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
 $ cd junos_monitoring_with_a_TIG_stack
 ```
 
-### Update the telegraf input plugin [telegraf.conf](telegraf.conf)
+### Update the input plugin of the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
 ```
-$ vi telegraf.conf
+$ vi configs/telegraf-openconfig.conf
 ```
 
-### Start containers
+### Create and start containers
 
-Run this command to start containers using the [docker-compose.yml](docker-compose.yml) file.  
-This will pull the required docker images.  
-This will instanciate 3 containers (Telegraf, Influxdb, Grafana)  
-The 3 containers will be connected to same network  
+Run this command to create and start containers using the [docker-compose.yml](docker-compose.yml) file:   
+- This will create a docker network.  
+- This will pull the required docker images.  
+- This will instanciate 3 containers (Telegraf, Influxdb, Grafana)  
+- The 3 containers will be connected to same docker network  
 
-Telegraf will be instanciate with the telegraf configuration file [telegraf.conf](telegraf.conf)   
-It will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
+A telegraf container will be instanciate with the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)   
+It will collect data from Junos according to the telegraf input plugin configuration in [telegraf-openconfig.conf](configs/telegraf-openconfig.conf) 
 It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`    
 It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
 
 The grafana container will load all dashboards json files from the directory [dashboards](dashboards)  
-It will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
+It will use the influxdb container as indicated in the [datasource.yaml](configs/datasource.yaml) config file.  
 
 
 
@@ -235,13 +316,16 @@ Run this command to list docker images
 ```
 $ docker images
 ```
-Run this command to list containers
-```
-$ docker-compose ps
-```
+Run this command to list running containers
 ```
 $ docker ps
 ```
+Run this command to list containers
+
+```
+$ docker-compose ps
+```
+
 Run this command to list networks
 ```
 $ docker network ls
@@ -253,23 +337,73 @@ The default username and password are admin/admin.
 You should see the dashboards from the directory [dashboards](dashboards)  
 You can create your own dashboards.  
 
+### stop containers 
+
+Run this command to stop containers without removing them
+```
+$ docker-compose -f docker-compose.yml stop
+```
+Run this command to list running containers
+```
+$ docker ps
+```
+Run this command to list all containers
+
+```
+$ docker ps -a
+```
+Run this command to list containers
+```
+$ docker-compose ps
+```
+Run this command to list networks
+```
+$ docker network ls
+```
+
+### start containers
+
+Run this command to start containers 
+```
+$ docker-compose -f docker-compose.yml start
+```
+Run this command to list running containers
+```
+$ docker ps
+```
+Run this command to list all containers
+```
+$ docker ps -a
+```
+Run this command to list containers
+```
+$ docker-compose ps
+```
+Run this command to list networks
+```
+$ docker network ls
+```
+
 ### stop and remove containers and networks 
 
 Run this command to stop and remove containers and networks 
 ```
 $ docker-compose -f docker-compose.yml down
 ```
-
-Run these commands to verify
 ```
-$ docker-compose ps
-```
+Run this command to list running containers
 ```
 $ docker ps
 ```
+Run this command to list all containers
 ```
 $ docker ps -a
 ```
+Run this command to list containers
+```
+$ docker-compose ps
+```
+Run this command to list networks
 ```
 $ docker network ls
 ```
@@ -282,9 +416,9 @@ $ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
 $ cd junos_monitoring_with_a_TIG_stack
 ```
 
-### Update the telegraf input plugin [telegraf.conf](telegraf.conf)
+### Update the input plugin in the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
 ```
-$ vi telegraf.conf
+$ vi configs/telegraf-openconfig.conf
 ```
 
 ### pull docker images for influxdb, telegraf, grafana 
@@ -328,15 +462,15 @@ influxdb:1.7.2
 
 #### Telegraf container
 
-Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf.conf](telegraf.conf)   
+Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)   
 The Telegraf container will be connected to the network tig.  
-This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf.conf](telegraf.conf)  
+This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)  
 It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`    
 It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
 
 ```
 $ docker run -d --name telegraf \
--v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
+-v $PWD/configs/telegraf-openconfig.conf:/etc/telegraf/telegraf.conf:ro \
 --network=tig \
 telegraf:1.9.1
 ```
@@ -346,13 +480,13 @@ telegraf:1.9.1
 Run this command to instanciate a Grafana container.  
 The Grafana container will be connected to the network tig.  
 The container will load all dashboards json files from the directory [dashboards](dashboards)  
-The container will use the influxdb container as indicated in the [datasource.yaml](datasource.yaml) config file.  
+The container will use the influxdb container as indicated in the [datasource.yaml](configs/datasource.yaml) config file.  
 
 ```
 $ docker run -d --name grafana \
 -p 3000:3000 \
--v $PWD/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro \
--v $PWD/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro \
+-v $PWD/configs/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro \
+-v $PWD/configs/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro \
 -v $PWD/dashboards:/var/tmp/dashboards \
 --network=tig \
 grafana/grafana:5.4.2
@@ -374,8 +508,6 @@ You can now use the Grafana GUI `http://host_ip_address:3000`.
 The default username and password are admin/admin.  
 You should see the dashboards from the directory [dashboards](dashboards)  
 You can create your own dashboards.  
-
-# Demo
 
 # Troubleshooting guide
 
@@ -543,4 +675,5 @@ Run this command to understand which YANG deviations are used on a Junos device:
 ```
 jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/jnx-openconfig-dev.yang
 ```
+
 
