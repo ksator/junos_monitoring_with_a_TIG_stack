@@ -1,6 +1,6 @@
 # About this repository
 
-This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).
+This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).  
 It currently supports data collection on Junos using SNMP and OpenConfig.
 
 Here are some Grafana screenshots, with data collected using Openconfig telemetry (GRPC) on Junos devices:
@@ -32,10 +32,10 @@ Influxdb is an open source time series database written in GO.
 
 # About Grafana
 
-Grafana is an open source tool used to visualize time series data.
-It supports InfluxDB and other backends.
-It runs as a web application.
-It is written in GO.
+Grafana is an open source tool used to visualize time series data.  
+It supports InfluxDB and other backends.  
+It runs as a web application.  
+It is written in GO.  
 
 # About a TIG stack
 
@@ -54,22 +54,22 @@ you can refer to these repositories:
 
 ## Telegraf
 
-The file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf) is a telegraf configuration file.
-It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)
-It will create the influxdb database `juniper` and the influxdb user `juniper` with a password `juniper`
+The file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf) is a telegraf configuration file.  
+It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
+It will create the influxdb database `juniper` and the influxdb user `juniper` with a password `juniper`  
 
-You can also use the telegraf `snmp` input plugin to monitor Junos.
+You can also use the telegraf `snmp` input plugin to monitor Junos.  
 
 ## Grafana
 
-The file [datasource.yaml](configs/datasource.yaml) is config file.
-It contains a list of datasources that will be added during Grafana start up.
+The file [datasource.yaml](configs/datasource.yaml) is config file.  
+It contains a list of datasources that will be added during Grafana start up.  
 
-The file [dashboards.yaml](configs/dashboards.yaml) is a config file.
-It contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.
-When Grafana starts, it will insert all dashboards json files available in the paths configured in the file [dashboards.yaml](configs/dashboards.yaml)
+The file [dashboards.yaml](configs/dashboards.yaml) is a config file.  
+It contains a list of dashboards providers that will load dashboards into Grafana from the local filesystem.  
+When Grafana starts, it will insert all dashboards json files available in the paths configured in the file [dashboards.yaml](configs/dashboards.yaml)  
 
-The directory [dashboards](dashboards) has dashboards json files
+The directory [dashboards](dashboards) has dashboards json files  
 
 ## docker-compose
 
@@ -79,9 +79,9 @@ The docker-compose file [docker-compose.yml](docker-compose.yml) can be used to 
 
 ## Docker
 
-You need to install docker.
+You need to install docker.  
 
-Check if Docker is already installed
+Check if Docker is already installed  
 ```
 $ docker --version
 ```
@@ -155,14 +155,15 @@ Docker version 18.03.1-ce, build 9ee9f40
 
 ## Docker compose
 
-you need to install docker compose.
+you need to install docker compose.  
 
 Check if docker compose is already installed
 ```
 $ docker-compose --version
 ```
 
-If it was not already installed, install it. Here's how to install in on Ubuntu 16.04:
+If it was not already installed, install it.  
+Here's how to install in on Ubuntu 16.04:
 ```
 $ sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 ```
@@ -178,9 +179,9 @@ $ docker-compose --version
 
 ## Junos
 
-In order to collect data from Junos using openconfig telemetry, the devices require the Junos packages ```openconfig``` and ```network agent```
-Starting with Junos OS Release 18.3R1, the Junos OS image includes these 2 packages; therefore, you do not need anymore to install them separately on your device.
-If you are using an older Junos release, it is required to install these two packages separately.
+In order to collect data from Junos using openconfig telemetry, the devices require the Junos packages ```openconfig``` and ```network agent```  
+Starting with Junos OS Release 18.3R1, the Junos OS image includes these 2 packages; therefore, you do not need anymore to install them separately on your device.  
+If you are using an older Junos release, it is required to install these two packages separately.  
 
 Run this command to verify:
 ```
@@ -214,24 +215,21 @@ You can use of one these differents workflows:
 - docker compose workflow
 - docker workflow
 
-## make
+## make workflow
 
-### clone the repository
+clone the repository
 ```
 $ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
 $ cd junos_monitoring_with_a_TIG_stack
 ```
-### Update the input plugin of the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
+Update the input plugin of the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
 ```
 $ vi configs/telegraf-openconfig.conf
 ```
-### Makefile
+There is a [Makefile](Makefile) at the root of the repository.  
+It uses docker and docker-compose commands.  
 
-There is a [Makefile](Makefile) at the root of the repository.
-It uses docker and docker-compose commands.
-
-
-#### Create and start containers
+### Create and start containers
 
 run this command to:
 - create a docker network.
@@ -242,27 +240,27 @@ run this command to:
 ```
 $ make up
 ```
-#### Stop the containers
+### Stop the containers
 
 run this command to stop containers without removing them
 
 ```
 $ make stop
 ```
-#### Start the existing containers
+### Start the existing containers
 
 Run this command to start existing containers
 ```
 $ make start
 ```
-#### stop and remove containers and networks
+### stop and remove containers and networks
 
 Run this command to stop and remove containers and networks
 ```
 $ make down
 ```
 
-#### cli
+### containers cli
 
 To start a shell session in a container, run one of these commands:
 ```
@@ -275,17 +273,17 @@ $ make influxdb-cli
 $ make grafana-cli
 ```
 
-To exit the session, run the command `exit`
+To exit the session, run the command `exit` in the container shell session  
 
 ## Docker compose workflow
 
-### clone the repository
+clone the repository
 ```
 $ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
 $ cd junos_monitoring_with_a_TIG_stack
 ```
 
-### Update the input plugin of the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
+Update the input plugin of the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
 ```
 $ vi configs/telegraf-openconfig.conf
 ```
@@ -298,15 +296,13 @@ Run this command to create and start containers using the [docker-compose.yml](d
 - This will instanciate 3 containers (Telegraf, Influxdb, Grafana)
 - The 3 containers will be connected to same docker network
 
-A telegraf container will be instanciate with the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
-It will collect data from Junos according to the telegraf input plugin configuration in [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
-It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`
-It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`
+A telegraf container will be instanciate with the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)  
+It will collect data from Junos according to the telegraf input plugin configuration in [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)  
+It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`  
+It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
 
-The grafana container will load all dashboards json files from the directory [dashboards](dashboards)
-It will use the influxdb container as indicated in the [datasource.yaml](configs/datasource.yaml) config file.
-
-
+The grafana container will load all dashboards json files from the directory [dashboards](dashboards)  
+It will use the influxdb container as indicated in the [datasource.yaml](configs/datasource.yaml) config file.  
 
 ```
 $ docker-compose -f docker-compose.yml up -d
@@ -331,10 +327,11 @@ $ docker network ls
 ```
 
 ### Use Grafana GUI
-You can now use the Grafana GUI `http://host_ip_address:3000`.
-The default username and password are admin/admin.
-You should see the dashboards from the directory [dashboards](dashboards)
-You can create your own dashboards.
+
+You can now use the Grafana GUI `http://host_ip_address:3000`.  
+The default username and password are admin/admin.  
+You should see the dashboards from the directory [dashboards](dashboards)  
+You can create your own dashboards.  
 
 ### stop containers
 
@@ -408,13 +405,13 @@ $ docker network ls
 
 ## Docker workflow
 
-### clone the repository
+clone the repository
 ```
 $ git clone https://github.com/ksator/junos_monitoring_with_a_TIG_stack.git
 $ cd junos_monitoring_with_a_TIG_stack
 ```
 
-### Update the input plugin in the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
+Update the input plugin in the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
 ```
 $ vi configs/telegraf-openconfig.conf
 ```
@@ -460,11 +457,11 @@ influxdb:1.7.2
 
 #### Telegraf container
 
-Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
-The Telegraf container will be connected to the network tig.
-This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)
-It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`
-It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`
+Run this command to instanciate a telegraf container with the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)  
+The Telegraf container will be connected to the network tig.  
+This container will collect data from Junos according to the telegraf input plugin configuration in [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)  
+It will create on the influxdb container the database `juniper` and the user `juniper` with a password `juniper`  
+It will store the data collected in the database `juniper` of the influxdb container using the user `juniper`  
 
 ```
 $ docker run -d --name telegraf \
@@ -475,10 +472,10 @@ telegraf:1.9.1
 
 #### Grafana container
 
-Run this command to instanciate a Grafana container.
-The Grafana container will be connected to the network tig.
-The container will load all dashboards json files from the directory [dashboards](dashboards)
-The container will use the influxdb container as indicated in the [datasource.yaml](configs/datasource.yaml) config file.
+Run this command to instanciate a Grafana container.  
+The Grafana container will be connected to the network tig.  
+The container will load all dashboards json files from the directory [dashboards](dashboards)  
+The container will use the influxdb container as indicated in the [datasource.yaml](configs/datasource.yaml) config file.  
 
 ```
 $ docker run -d --name grafana \
@@ -501,11 +498,12 @@ Run this command to display detailed information on the tig network
 $ docker network inspect tig
 ```
 
-### Use Grafana GUI
-You can now use the Grafana GUI `http://host_ip_address:3000`.
-The default username and password are admin/admin.
-You should see the dashboards from the directory [dashboards](dashboards)
-You can create your own dashboards.
+### Use Grafana GUI  
+
+You can now use the Grafana GUI `http://host_ip_address:3000`.  
+The default username and password are admin/admin.  
+You should see the dashboards from the directory [dashboards](dashboards)  
+You can create your own dashboards.  
 
 # Troubleshooting guide
 
@@ -630,9 +628,9 @@ jcluser@vMX1> show agent sensors
 
 ### packages
 
-The Junos packages `openconfig` and `na telemetry` are required for Openconfig telemetry.
-Starting with Junos OS Release 18.3R1, the Junos OS image includes them, therefore, you do not need anymore to install them separately on your device.
-If your devices are running an older Junos release, you need to install them separately.
+The Junos packages `openconfig` and `na telemetry` are required for Openconfig telemetry.  
+Starting with Junos OS Release 18.3R1, the Junos OS image includes them, therefore, you do not need anymore to install them separately on your device.  
+If your devices are running an older Junos release, you need to install them separately.  
 
 Run this command to validate your Junos devices are using these 2 packages:
 ```
@@ -663,7 +661,7 @@ Run this command to list YANG modules available on Junos:
 jcluser@vMX-1> file list /opt/yang-pkg/junos-openconfig/yang/
 ```
 
-Run this command to know which `reference` of a YANG module is used on a Junos device.
+Run this command to know which `reference` of a YANG module is used on a Junos device.  
 Example with openconfig-interfaces.yang YANG module
 ```
 jcluser@vMX-1> file more /opt/yang-pkg/junos-openconfig/yang/openconfig-interfaces.yang
