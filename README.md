@@ -307,25 +307,6 @@ It will use the influxdb container as indicated in the [datasource.yaml](configs
 ```
 $ docker-compose -f docker-compose.yml up -d
 ```
-Run this command to list docker images
-```
-$ docker images
-```
-Run this command to list running containers
-```
-$ docker ps
-```
-Run this command to list containers
-
-```
-$ docker-compose ps
-```
-
-Run this command to list networks
-```
-$ docker network ls
-```
-
 ### Use Grafana GUI
 
 You can now use the Grafana GUI `http://host_ip_address:3000`.  
@@ -339,45 +320,12 @@ Run this command to stop containers without removing them
 ```
 $ docker-compose -f docker-compose.yml stop
 ```
-Run this command to list running containers
-```
-$ docker ps
-```
-Run this command to list all containers
-
-```
-$ docker ps -a
-```
-Run this command to list containers
-```
-$ docker-compose ps
-```
-Run this command to list networks
-```
-$ docker network ls
-```
 
 ### start containers
 
 Run this command to start containers
 ```
 $ docker-compose -f docker-compose.yml start
-```
-Run this command to list running containers
-```
-$ docker ps
-```
-Run this command to list all containers
-```
-$ docker ps -a
-```
-Run this command to list containers
-```
-$ docker-compose ps
-```
-Run this command to list networks
-```
-$ docker network ls
 ```
 
 ### stop and remove containers and networks
@@ -386,23 +334,6 @@ Run this command to stop and remove containers and networks
 ```
 $ docker-compose -f docker-compose.yml down
 ```
-Run this command to list running containers
-```
-$ docker ps
-```
-Run this command to list all containers
-```
-$ docker ps -a
-```
-Run this command to list containers
-```
-$ docker-compose ps
-```
-Run this command to list networks
-```
-$ docker network ls
-```
-
 ## Docker workflow
 
 clone the repository
@@ -426,19 +357,11 @@ $ docker pull telegraf:1.9.1
 ```
 $ docker pull grafana/grafana:5.4.2
 ```
-verify
-```
-$ docker image
-```
 ### Create a network
 
 Create a network
 ```
 $ docker network create tig
-```
-verify
-```
-$ docker network ls
 ```
 
 ### Instanciate containers
@@ -493,6 +416,10 @@ Run this command to list running containers
 ```
 $ docker ps
 ```
+Run this command to list docker networks
+```
+$ docker network ls
+```
 Run this command to display detailed information on the tig network
 ```
 $ docker network inspect tig
@@ -506,6 +433,29 @@ You should see the dashboards from the directory [dashboards](dashboards)
 You can create your own dashboards.  
 
 # Troubleshooting guide
+
+## Docker
+
+Run this command to list Docker images 
+```
+$ docker image
+```
+Run this command to list running containers
+```
+$ docker ps
+```
+Run this command to list all containers
+```
+$ docker ps -a
+```
+Run this command to list containers
+```
+$ docker-compose ps
+```
+Run this command to list networks
+```
+$ docker network ls
+```
 
 ## telegraf
 
