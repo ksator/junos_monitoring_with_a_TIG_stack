@@ -52,13 +52,17 @@ you can refer to these repositories:
 
 # About the repository content
 
-## Telegraf
+## docker-compose
 
-The file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf) is a telegraf configuration file.  
-It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
-It will create the influxdb database `juniper` and the influxdb user `juniper` with a password `juniper`  
+The docker-compose file [docker-compose.yml](docker-compose.yml) can be used to manage the TIG stack (create, start, stop, remove).  
 
-You can also use the telegraf `snmp` input plugin to monitor Junos.  
+## Makefile 
+
+The [Makefile](makefile) can be used to manage the TIG stack (create, start, stop, remove) as an alternative to docker-compose.
+
+## Junos 
+
+The python file [upgrade-junos.py](upgrade-junos.py) can be used to install the Junos packages ```openconfig``` and ```network agent``` on the Junos devices 
 
 ## Grafana
 
@@ -71,9 +75,20 @@ When Grafana starts, it will insert all dashboards json files available in the p
 
 The directory [dashboards](dashboards) has dashboards json files  
 
-## docker-compose
+## Telegraf
 
-The docker-compose file [docker-compose.yml](docker-compose.yml) can be used to start a TIG stack.
+The yaml file [data.yml](data.yml) has the Junos devices details (ip addresses, ...).  
+The python script [render-telegraf-configuration.py](render-telegraf-configuration.py) uses the yaml file [data.yml](data.yml) and the  template [telegraf-openconfig.j2](templates/telegraf-openconfig.j2) to render the telegraf configuration file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf)  
+The file [telegraf-openconfig.conf](configs/telegraf-openconfig.conf) is a telegraf configuration file: 
+- It uses the telegraf `jti_openconfig_telemetry` input plugin (grpc client to collect telemetry on junos devices) and `influxbd` output plugin (database to store the data collected)  
+- It will create the influxdb database `juniper` and the influxdb user `juniper` with a password `juniper`  
+
+You can also use the telegraf `snmp` input plugin to monitor Junos.  
+
+
+
+
+
 
 # Requirements to use this repository
 
