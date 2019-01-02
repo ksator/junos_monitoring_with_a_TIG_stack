@@ -1,5 +1,6 @@
 # usage:
 # download the Junos packages ```openconfig``` and ```network agent``` from Juniper download website and save them locally
+# vi data.yml
 # python ./upgrade-junos.py
 
 from yaml import load
