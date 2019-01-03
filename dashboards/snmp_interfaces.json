@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1546530107482,
+  "iteration": 1546530852216,
   "links": [],
   "panels": [
     {
@@ -32,13 +32,15 @@
       },
       "id": 2,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -129,7 +131,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics -  bps - $hostname",
+      "title": "SNMP - Interfaces statistics -  IN bps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -181,13 +183,14 @@
       },
       "id": 4,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -278,7 +281,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - bps - $hostname",
+      "title": "SNMP - Interfaces statistics - OUT bps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -331,13 +334,14 @@
       },
       "id": 3,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -421,7 +425,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - InUcastPkts - pps - $hostname",
+      "title": "SNMP - Interfaces statistics - IN unicast pps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -473,13 +477,14 @@
       },
       "id": 5,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -563,7 +568,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - OutUcastPkts - pps - $hostname",
+      "title": "SNMP - Interfaces statistics - Out unicast pps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -602,7 +607,7 @@
       }
     }
   ],
-  "refresh": "5s",
+  "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
