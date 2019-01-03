@@ -5,7 +5,6 @@ build-telegraf-conf:
 	python ./render-telegraf-configuration.py -o 'configs/telegraf-openconfig.conf' -t 'templates/telegraf-openconfig.j2' -y 'data.yml'
 	python ./render-telegraf-configuration.py -o 'configs/telegraf-snmp.conf' -t 'templates/telegraf-snmp.j2' -y 'data.yml'
 
-
 grafana-cli:
 	@echo "======================================================================"
 	@echo "start a shell session in the grafana container"
@@ -14,9 +13,15 @@ grafana-cli:
 
 telegraf-openconfig-cli:
 	@echo "======================================================================"
-	@echo "start a shell session in the telegraf container"
+	@echo "start a shell session in the telegraf container for Openconfig"
 	@echo "======================================================================"
 	docker exec -i -t telegraf-openconfig /bin/bash
+
+telegraf-snmp-cli:
+	@echo "======================================================================"
+	@echo "start a shell session in the telegraf container for SNMP"
+	@echo "======================================================================"
+	docker exec -i -t telegraf-snmp /bin/bash
 
 influxb-cli:
 	@echo "======================================================================"
