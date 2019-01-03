@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1546527539153,
+  "iteration": 1546530107482,
   "links": [],
   "panels": [
     {
@@ -98,8 +97,16 @@
                 "type": "mean"
               },
               {
-                "params": [],
-                "type": "difference"
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
+              },
+              {
+                "params": [
+                  " * 8"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -122,7 +129,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - InOctets - diff - $hostname",
+      "title": "SNMP - Interfaces statistics -  bps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -239,8 +246,16 @@
                 "type": "mean"
               },
               {
-                "params": [],
-                "type": "difference"
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
+              },
+              {
+                "params": [
+                  " *8"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -263,7 +278,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - OutOctets - diff - $hostname",
+      "title": "SNMP - Interfaces statistics - bps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -380,8 +395,10 @@
                 "type": "mean"
               },
               {
-                "params": [],
-                "type": "difference"
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
               }
             ]
           ],
@@ -404,7 +421,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - InUcastPkts - diff - $hostname",
+      "title": "SNMP - Interfaces statistics - InUcastPkts - pps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -520,8 +537,10 @@
                 "type": "mean"
               },
               {
-                "params": [],
-                "type": "difference"
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
               }
             ]
           ],
@@ -544,7 +563,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - OutUcastPkts - diff - $hostname",
+      "title": "SNMP - Interfaces statistics - OutUcastPkts - pps - $hostname",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -889,6 +908,5 @@
   "timezone": "",
   "title": "SNMP Interfaces statistics",
   "uid": "aMDia5Umk",
-  "version": 19
+  "version": 1
 }
-
