@@ -1,8 +1,10 @@
 build-telegraf-conf:
 	@echo "======================================================================"
-	@echo "Build telegraf configuration file from template"
+	@echo "Build telegraf configuration files from template"
 	@echo "======================================================================"
 	python ./render-telegraf-configuration.py -o 'configs/telegraf-openconfig.conf' -t 'templates/telegraf-openconfig.j2' -y 'data.yml'
+	python ./render-telegraf-configuration.py -o 'configs/telegraf-snmp.conf' -t 'templates/telegraf-snmp.j2' -y 'data.yml'
+
 
 grafana-cli:
 	@echo "======================================================================"
