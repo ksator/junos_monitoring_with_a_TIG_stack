@@ -1,4 +1,5 @@
 This repository provides instructions about how to monitor Junos devices using a TIG stack (Telegraf-Influxdb-Grafana).  
+It has automation content to monitor Junos devices using a TIG stack.  
 It currently supports data collection on Junos using SNMP and OpenConfig.
 
 Please visit the [**wiki**](https://github.com/ksator/junos_monitoring_with_a_TIG_stack/wiki) for detailled instructions.  
