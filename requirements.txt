@@ -1,0 +1,5 @@
+junos-eznc==2.2.0
+Jinja2==2.10
+PyYAML==3.12
+argparse==1.2.1
+
