@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
-  "iteration": 1545555701546,
+  "iteration": 1546964075595,
   "links": [],
   "panels": [
     {
@@ -28,19 +27,21 @@
       "fill": 1,
       "gridPos": {
         "h": 9,
-        "w": 24,
+        "w": 12,
         "x": 0,
         "y": 0
       },
       "id": 10,
       "legend": {
+        "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -66,7 +67,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "number of EGBP neighbors on device $devices",
+          "alias": "# of EGBP neighbors configured",
           "groupBy": [
             {
               "params": [
@@ -119,12 +120,13 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "EBGP neighbors configured",
+      "title": "EBGP neighbors configured on $devices",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
+      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -165,19 +167,20 @@
       "fill": 1,
       "gridPos": {
         "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 9
+        "w": 12,
+        "x": 12,
+        "y": 0
       },
       "id": 8,
       "legend": {
+        "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -203,7 +206,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "number of ESTABLISHED BGP session on device $devices",
+          "alias": "# of ESTABLISHED BGP session",
           "groupBy": [
             {
               "params": [
@@ -256,192 +259,13 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "BGP sessions established",
+      "title": "BGP sessions established on $devices",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "description": "Number of BGP prefixes received.  \nSelect a device to see how many BGP prefixes it received.   \nSelect a neighbor to see how many  BGP prefixes the device you selected received from the neighbor you selected",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "id": 12,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "minSpan": 11,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": "devices",
-      "repeatDirection": "v",
-      "scopedVars": {
-        "devices": {
-          "selected": true,
-          "text": "100.123.1.0",
-          "value": "100.123.1.0"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Total number of BGP prefixes received on device $devices",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "/bgp/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "/network-instances/network-instance/protocols/protocol/bgp/global/state/total-prefixes"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=~",
-              "value": "/^$devices$/"
-            }
-          ]
-        },
-        {
-          "alias": "number of BGP prefixes received on device $devices from $bgpneighbors",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "/bgp/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/afi-safis/afi-safi/state/total-prefixes"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=~",
-              "value": "/^$devices$/"
-            },
-            {
-              "condition": "AND",
-              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/@neighbor-address",
-              "operator": "=~",
-              "value": "/^$bgpneighbors$/"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "BGP prefixes received",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
+      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -481,20 +305,21 @@
       "description": "The number of transitions to the BGP session state established.     \nSelect a device and a neighbor",
       "fill": 1,
       "gridPos": {
-        "h": 11,
-        "w": 24,
+        "h": 9,
+        "w": 12,
         "x": 0,
-        "y": 27
+        "y": 9
       },
       "id": 16,
       "legend": {
+        "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -519,13 +344,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Transition to the BGP session state established for device $devices and his BGP neighbor $bgpneighbors.",
+          "alias": "Transition to the BGP session state established for BGP neighbor $bgpneighbors.",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/@neighbor-address"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -573,12 +404,467 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Transitions to the BGP session state established",
+      "title": "Transitions to the BGP session state established on $devices",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "description": "Number of BGP prefixes received.  \nSelect a device to see how many BGP prefixes it received.   \nSelect a neighbor to see how many  BGP prefixes the device you selected received from the neighbor you selected",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 17,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "minSpan": 11,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Total number of BGP prefixes received",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/global/state/total-prefixes"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            }
+          ]
+        },
+        {
+          "alias": "BGP prefixes received from $bgpneighbors",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/afi-safis/afi-safi/state/total-prefixes"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            },
+            {
+              "condition": "AND",
+              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/@neighbor-address",
+              "operator": "=~",
+              "value": "/^$bgpneighbors$/"
+            }
+          ]
+        },
+        {
+          "alias": "BGP prefixes accepted from $bgpneighbors",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/afi-safis/afi-safi/state/prefixes/accepted"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/@neighbor-address",
+              "operator": "=~",
+              "value": "/^$bgpneighbors$/"
+            },
+            {
+              "condition": "AND",
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            }
+          ]
+        },
+        {
+          "alias": "BGP prefixes installed from $bgpneighbors",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/afi-safis/afi-safi/state/prefixes/installed"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/@neighbor-address",
+              "operator": "=~",
+              "value": "/^$bgpneighbors$/"
+            },
+            {
+              "condition": "AND",
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "BGP prefixes received on device $devices",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "description": "Number of BGP prefixes sent.  \nSelect a device to see how many BGP prefixes it sent.   \nSelect a neighbor to see how many  BGP prefixes the device you selected sent to the neighbor you selected",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "minSpan": 11,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "devices",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "devices": {
+          "selected": true,
+          "text": "100.123.1.0",
+          "value": "100.123.1.0"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Total number of BGP prefixes sent",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/afi-safis/afi-safi/state/prefixes/sent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            }
+          ]
+        },
+        {
+          "alias": "BGP prefixes sent to $bgpneighbors",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/afi-safis/afi-safi/state/prefixes/sent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            },
+            {
+              "condition": "AND",
+              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/@neighbor-address",
+              "operator": "=~",
+              "value": "/^$bgpneighbors$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "BGP prefixes sent from device $devices",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -614,12 +900,17 @@
   "refresh": "5s",
   "schemaVersion": 16,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "openconfig",
+    "junos",
+    "bgp"
+  ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "100.123.1.0",
           "value": [
             "100.123.1.0"
@@ -672,6 +963,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "192.168.1.1",
           "value": "192.168.1.1"
         },
@@ -728,5 +1020,5 @@
   "timezone": "",
   "title": "openconfig BGP",
   "uid": "7fZJetsik",
-  "version": 57
+  "version": 1
 }
