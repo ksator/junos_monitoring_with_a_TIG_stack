@@ -12,10 +12,11 @@
       }
     ]
   },
+  "description": "Monitor BGP and Interfaces using SNMP",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1546541772552,
+  "iteration": 1546988806294,
   "links": [],
   "panels": [
     {
@@ -25,8 +26,8 @@
       "dashes": false,
       "fill": 1,
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 10,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -37,7 +38,7 @@
         "current": true,
         "max": true,
         "min": true,
-        "rightSide": false,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -50,28 +51,27 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeat": "hostname",
+      "repeat": null,
       "repeatDirection": "v",
-      "scopedVars": {
-        "hostname": {
-          "selected": true,
-          "text": "demo-qfx10k2-14",
-          "value": "demo-qfx10k2-14"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "$ifName",
+          "alias": "$tag_ifName",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "ifName"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -116,7 +116,7 @@
             {
               "key": "hostname",
               "operator": "=~",
-              "value": "/^$hostname$/"
+              "value": "/^$hostnames$/"
             },
             {
               "condition": "AND",
@@ -131,7 +131,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics -  IN bps - $hostname",
+      "title": "Interfaces statistics -  IN bps - device $hostnames",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -177,10 +177,10 @@
       "dashes": false,
       "fill": 1,
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 10
       },
       "id": 4,
       "legend": {
@@ -189,6 +189,7 @@
         "current": true,
         "max": true,
         "min": true,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -201,13 +202,13 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeat": "hostname",
-      "repeatDirection": "v",
+      "repeat": null,
+      "repeatDirection": null,
       "scopedVars": {
-        "hostname": {
+        "hostnames": {
           "selected": true,
-          "text": "demo-qfx10k2-14",
-          "value": "demo-qfx10k2-14"
+          "text": "vMX-addr-0",
+          "value": "vMX-addr-0"
         }
       },
       "seriesOverrides": [],
@@ -216,13 +217,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "$ifName",
+          "alias": "$tag_ifName",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "ifName"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -267,7 +274,7 @@
             {
               "key": "hostname",
               "operator": "=~",
-              "value": "/^$hostname$/"
+              "value": "/^$hostnames$/"
             },
             {
               "condition": "AND",
@@ -282,7 +289,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - OUT bps - $hostname",
+      "title": "Interfaces statistics - OUT bps -  device  $hostnames",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -330,9 +337,9 @@
       "fill": 1,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 8
+        "y": 19
       },
       "id": 3,
       "legend": {
@@ -341,6 +348,7 @@
         "current": true,
         "max": true,
         "min": true,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -353,13 +361,13 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeat": "hostname",
+      "repeat": null,
       "repeatDirection": "v",
       "scopedVars": {
-        "hostname": {
+        "hostnames": {
           "selected": true,
-          "text": "demo-qfx10k2-14",
-          "value": "demo-qfx10k2-14"
+          "text": "vMX-addr-0",
+          "value": "vMX-addr-0"
         }
       },
       "seriesOverrides": [],
@@ -368,13 +376,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "$ifName",
+          "alias": "$tag_ifName",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "ifName"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -411,14 +425,14 @@
           "tags": [
             {
               "key": "hostname",
-              "operator": "=",
-              "value": "demo-qfx10k2-14"
+              "operator": "=~",
+              "value": "/^$hostnames$/"
             },
             {
               "condition": "AND",
               "key": "ifName",
-              "operator": "=",
-              "value": "et-0/0/0"
+              "operator": "=~",
+              "value": "/^$ifName$/"
             }
           ]
         }
@@ -427,7 +441,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - IN unicast pps - $hostname",
+      "title": "Interfaces statistics - IN unicast pps -  device $hostnames",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -473,10 +487,10 @@
       "dashes": false,
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 8
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 28
       },
       "id": 5,
       "legend": {
@@ -485,6 +499,7 @@
         "current": true,
         "max": true,
         "min": true,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -497,13 +512,13 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeat": "hostname",
+      "repeat": null,
       "repeatDirection": "v",
       "scopedVars": {
-        "hostname": {
+        "hostnames": {
           "selected": true,
-          "text": "demo-qfx10k2-14",
-          "value": "demo-qfx10k2-14"
+          "text": "vMX-addr-0",
+          "value": "vMX-addr-0"
         }
       },
       "seriesOverrides": [],
@@ -512,13 +527,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "$ifName",
+          "alias": "$tag_ifName",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "ifName"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -555,14 +576,14 @@
           "tags": [
             {
               "key": "hostname",
-              "operator": "=",
-              "value": "demo-qfx10k2-14"
+              "operator": "=~",
+              "value": "/^$hostnames$/"
             },
             {
               "condition": "AND",
               "key": "ifName",
-              "operator": "=",
-              "value": "et-0/0/0"
+              "operator": "=~",
+              "value": "/^$ifName$/"
             }
           ]
         }
@@ -571,7 +592,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP - Interfaces statistics - OUT unicast pps - $hostname",
+      "title": "Interfaces statistics - OUT unicast pps - device $hostnames",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -614,202 +635,32 @@
   "refresh": "5s",
   "schemaVersion": 16,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "snmp",
+    "interfaces"
+  ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "text": "10.0.0.11",
-          "value": "10.0.0.11"
-        },
-        "datasource": "influxdb",
-        "definition": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"bgpPeerRemoteAddr\"",
-        "hide": 2,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
-        "name": "bgpPeerRemoteAddr",
-        "options": [],
-        "query": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"bgpPeerRemoteAddr\"",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
           "tags": [],
-          "text": "et-0/0/0",
-          "value": "et-0/0/0"
+          "text": "ge-0/0/0 + ge-0/0/1",
+          "value": [
+            "ge-0/0/0",
+            "ge-0/0/1"
+          ]
         },
         "datasource": "influxdb",
         "definition": "SHOW TAG VALUES FROM \"snmp_interfaces_statistics\" with KEY = \"ifName\"",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": null,
-        "multi": false,
+        "multi": true,
         "name": "ifName",
-        "options": [
-          {
-            "selected": true,
-            "text": "et-0/0/0",
-            "value": "et-0/0/0"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/0.0",
-            "value": "et-0/0/0.0"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/1",
-            "value": "et-0/0/1"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/1.0",
-            "value": "et-0/0/1.0"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/2",
-            "value": "et-0/0/2"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/2.0",
-            "value": "et-0/0/2.0"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/2.16386",
-            "value": "et-0/0/2.16386"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/3",
-            "value": "et-0/0/3"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/3.0",
-            "value": "et-0/0/3.0"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/3.16386",
-            "value": "et-0/0/3.16386"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/48",
-            "value": "et-0/0/48"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/48.16386",
-            "value": "et-0/0/48.16386"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/49",
-            "value": "et-0/0/49"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/49.16386",
-            "value": "et-0/0/49.16386"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/50",
-            "value": "et-0/0/50"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/50.16386",
-            "value": "et-0/0/50.16386"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/51",
-            "value": "et-0/0/51"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/51.16386",
-            "value": "et-0/0/51.16386"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/6",
-            "value": "et-0/0/6"
-          },
-          {
-            "selected": false,
-            "text": "et-0/0/6.16386",
-            "value": "et-0/0/6.16386"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/0",
-            "value": "xe-0/0/0"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/0.16386",
-            "value": "xe-0/0/0.16386"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/1",
-            "value": "xe-0/0/1"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/1.16386",
-            "value": "xe-0/0/1.16386"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/2",
-            "value": "xe-0/0/2"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/2.16386",
-            "value": "xe-0/0/2.16386"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/6:0",
-            "value": "xe-0/0/6:0"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/6:1",
-            "value": "xe-0/0/6:1"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/6:2",
-            "value": "xe-0/0/6:2"
-          },
-          {
-            "selected": false,
-            "text": "xe-0/0/6:3",
-            "value": "xe-0/0/6:3"
-          }
-        ],
+        "options": [],
         "query": "SHOW TAG VALUES FROM \"snmp_interfaces_statistics\" with KEY = \"ifName\"",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "((et|ge|xe).*)",
         "skipUrlSync": false,
         "sort": 0,
@@ -822,58 +673,21 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "demo-qfx10k2-14",
+          "text": "vMX-addr-0",
           "value": [
-            "demo-qfx10k2-14"
+            "vMX-addr-0"
           ]
         },
         "datasource": "influxdb",
         "definition": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"hostname\"",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": null,
-        "multi": true,
-        "name": "hostname",
-        "options": [
-          {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": true,
-            "text": "demo-qfx10k2-14",
-            "value": "demo-qfx10k2-14"
-          },
-          {
-            "selected": false,
-            "text": "demo-qfx10k2-15",
-            "value": "demo-qfx10k2-15"
-          },
-          {
-            "selected": false,
-            "text": "demo-qfx5110-10",
-            "value": "demo-qfx5110-10"
-          },
-          {
-            "selected": false,
-            "text": "demo-qfx5110-11",
-            "value": "demo-qfx5110-11"
-          },
-          {
-            "selected": false,
-            "text": "demo-qfx5110-12",
-            "value": "demo-qfx5110-12"
-          },
-          {
-            "selected": false,
-            "text": "demo-qfx5110-9",
-            "value": "demo-qfx5110-9"
-          }
-        ],
+        "multi": false,
+        "name": "hostnames",
+        "options": [],
         "query": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"hostname\"",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -915,7 +729,7 @@
     ]
   },
   "timezone": "",
-  "title": "SNMP Interfaces statistics",
+  "title": "SNMP graphes",
   "uid": "aMDia5Umk",
   "version": 1
 }
