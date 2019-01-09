@@ -33,6 +33,13 @@
       name = "bgpPeerRemoteAddr"
       oid = ".1.3.6.1.2.1.15.3.1.7"
       is_tag = true
+    [[inputs.snmp.table.field]]
+      name = "bgpPeerRemoteAs"
+      oid = ".1.3.6.1.2.1.15.3.1.9"
+    [[inputs.snmp.table.field]]
+      name = "bgpPeerFsmEstablishedTransitions"
+      oid = ".1.3.6.1.2.1.15.3.1.15"
+
 
   [[inputs.snmp.table]]
     name = "interfaces_statistics"

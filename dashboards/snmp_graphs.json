@@ -16,9 +16,171 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1546988806294,
+  "iteration": 1547065126622,
   "links": [],
   "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "panels": [],
+      "title": "BGP",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "description": "The total number of times BGP transitioned into the established state for a peer.",
+      "fill": 1,
+      "gridPos": {
+        "h": 10,
+        "w": 23,
+        "x": 0,
+        "y": 1
+      },
+      "id": 11,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "peer $tag_bgpPeerRemoteAddr",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "bgpPeerRemoteAddr"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "snmp_BGP",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bgpPeerFsmEstablishedTransitions"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname",
+              "operator": "=~",
+              "value": "/^$hostnames$/"
+            },
+            {
+              "condition": "AND",
+              "key": "bgpPeerRemoteAddr",
+              "operator": "=~",
+              "value": "/^$bgpPeerRemoteAddr$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "BGP transitions to established state - device $hostnames",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 7,
+      "panels": [],
+      "title": "Interfaces",
+      "type": "row"
+    },
     {
       "aliasColors": {},
       "bars": false,
@@ -29,7 +191,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 12
       },
       "id": 2,
       "legend": {
@@ -180,7 +342,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 22
       },
       "id": 4,
       "legend": {
@@ -204,13 +366,6 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": null,
-      "scopedVars": {
-        "hostnames": {
-          "selected": true,
-          "text": "vMX-addr-0",
-          "value": "vMX-addr-0"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -339,7 +494,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 31
       },
       "id": 3,
       "legend": {
@@ -363,13 +518,6 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "v",
-      "scopedVars": {
-        "hostnames": {
-          "selected": true,
-          "text": "vMX-addr-0",
-          "value": "vMX-addr-0"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -490,7 +638,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 40
       },
       "id": 5,
       "legend": {
@@ -514,13 +662,6 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "v",
-      "scopedVars": {
-        "hostnames": {
-          "selected": true,
-          "text": "vMX-addr-0",
-          "value": "vMX-addr-0"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -637,14 +778,14 @@
   "style": "dark",
   "tags": [
     "snmp",
-    "interfaces"
+    "interfaces",
+    "bgp"
   ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "ge-0/0/0 + ge-0/0/1",
           "value": [
             "ge-0/0/0",
@@ -673,10 +814,9 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "vMX-addr-0",
-          "value": [
-            "vMX-addr-0"
-          ]
+          "value": "vMX-addr-0"
         },
         "datasource": "influxdb",
         "definition": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"hostname\"",
@@ -687,6 +827,34 @@
         "name": "hostnames",
         "options": [],
         "query": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"hostname\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "influxdb",
+        "definition": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"bgpPeerRemoteAddr\"",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "bgpPeerRemoteAddr",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"snmp_BGP\" with KEY = \"bgpPeerRemoteAddr\"",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
