@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1547064330759,
+  "iteration": 1547067504394,
   "links": [],
   "panels": [
     {
@@ -356,7 +356,7 @@
       ],
       "fontSize": "100%",
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
         "x": 0,
         "y": 11
@@ -508,6 +508,7 @@
       ],
       "title": "Interface Statistics for device $hostnames (bps)",
       "transform": "timeseries_aggregations",
+      "transparent": true,
       "type": "table"
     },
     {
@@ -531,7 +532,7 @@
       ],
       "fontSize": "100%",
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
         "x": 12,
         "y": 11
@@ -671,6 +672,149 @@
       ],
       "title": "Interface Statistics for device $hostnames (unicast pps)",
       "transform": "timeseries_aggregations",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "columns": [
+        {
+          "text": "Current",
+          "value": "current"
+        }
+      ],
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 17,
+      "links": [],
+      "pageSize": null,
+      "repeat": "hostnames",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "hostnames": {
+          "selected": true,
+          "text": "vMX-addr-0",
+          "value": "vMX-addr-0"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Op state",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Current",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "up",
+              "value": "1"
+            },
+            {
+              "text": "down",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "$tag_ifName",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "ifName"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "snmp_interfaces_statistics",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "ifOperStatus"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname",
+              "operator": "=~",
+              "value": "/^$hostnames$/"
+            },
+            {
+              "condition": "AND",
+              "key": "ifName",
+              "operator": "=~",
+              "value": "/^$ifName$/"
+            }
+          ]
+        }
+      ],
+      "title": "Interfaces - device $hostnames",
+      "transform": "timeseries_aggregations",
+      "transparent": true,
       "type": "table"
     }
   ],
@@ -714,11 +858,10 @@
       {
         "allValue": null,
         "current": {
-          "text": "ge-0/0/0 + ge-0/0/1 + ge-0/0/2",
+          "tags": [],
+          "text": "All",
           "value": [
-            "ge-0/0/0",
-            "ge-0/0/1",
-            "ge-0/0/2"
+            "$__all"
           ]
         },
         "datasource": "influxdb",
