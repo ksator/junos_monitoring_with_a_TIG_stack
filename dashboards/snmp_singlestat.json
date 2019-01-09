@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 6,
-  "iteration": 1547024621633,
+  "iteration": 1547029752314,
   "links": [],
   "panels": [
     {
@@ -25,9 +24,9 @@
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#299c46",
+        "#d44a3a",
         "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
+        "#299c46"
       ],
       "format": "s",
       "gauge": {
@@ -164,6 +163,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "vMX-addr-0",
           "value": [
             "vMX-addr-0"
@@ -222,5 +222,5 @@
   "timezone": "",
   "title": "SNMP singlestat",
   "uid": "mSGqfu8mk",
-  "version": 4
+  "version": 1
 }
