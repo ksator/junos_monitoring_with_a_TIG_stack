@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 5,
-  "iteration": 1546988413357,
+  "iteration": 1547024181772,
   "links": [],
   "panels": [
     {
@@ -74,7 +73,7 @@
         },
         {
           "alias": "Current state",
-          "colorMode": null,
+          "colorMode": "value",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -84,7 +83,10 @@
           "decimals": 2,
           "mappingType": 1,
           "pattern": "Current",
-          "thresholds": [],
+          "thresholds": [
+            "6",
+            "6"
+          ],
           "type": "string",
           "unit": "short",
           "valueMaps": [
@@ -548,7 +550,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -576,7 +577,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "ge-0/0/0 + ge-0/0/1 + ge-0/0/2",
           "value": [
             "ge-0/0/0",
@@ -665,5 +665,5 @@
   "timezone": "",
   "title": "SNMP  tables",
   "uid": "GiQF-_Uik",
-  "version": 3
+  "version": 1
 }
