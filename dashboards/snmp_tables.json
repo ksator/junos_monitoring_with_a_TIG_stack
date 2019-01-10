@@ -12,20 +12,163 @@
       }
     ]
   },
-  "description": "Monitor BGP and Interfaces using SNMP",
+  "description": "Monitor BGP and Interfaces and system details using SNMP",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1547069666897,
+  "iteration": 1547142411809,
   "links": [],
   "panels": [
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "title": "System",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "decimals": 2,
+      "format": "dtdurations",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 19,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": "hostnames",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "hostnames": {
+          "selected": true,
+          "text": "vMX-addr-0",
+          "value": "vMX-addr-0"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "snmp_snmp",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "uptime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname",
+              "operator": "=~",
+              "value": "/^$hostnames$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "10800, 86400",
+      "title": "Uptime for device $hostnames",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
     {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 10
       },
       "id": 9,
       "panels": [],
@@ -33,18 +176,13 @@
       "type": "row"
     },
     {
-      "columns": [
-        {
-          "text": "Current",
-          "value": "current"
-        }
-      ],
+      "columns": [],
       "fontSize": "100%",
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
-        "y": 1
+        "y": 11
       },
       "id": 11,
       "links": [],
@@ -69,10 +207,10 @@
           "alias": "Time",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
-          "type": "date"
+          "type": "hidden"
         },
         {
-          "alias": "Current state",
+          "alias": "",
           "colorMode": "value",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -82,7 +220,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "Current",
+          "pattern": "session state",
           "thresholds": [
             "6",
             "6"
@@ -116,134 +254,13 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "alias": "connection to peer $tag_bgpPeerRemoteAddr",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "bgpPeerRemoteAddr"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "snmp_BGP",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "bgpPeerState"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=~",
-              "value": "/^$hostnames$/"
-            },
-            {
-              "condition": "AND",
-              "key": "bgpPeerRemoteAddr",
-              "operator": "=~",
-              "value": "/^$bgpPeerRemoteAddr$/"
-            }
-          ]
-        }
-      ],
-      "title": "BGP Peers state - Device $hostnames",
-      "transform": "timeseries_aggregations",
-      "transparent": true,
-      "type": "table"
-    },
-    {
-      "columns": [
-        {
-          "text": "Current",
-          "value": "current"
-        }
-      ],
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 1
-      },
-      "id": 15,
-      "links": [],
-      "pageSize": null,
-      "repeat": "hostnames",
-      "repeatDirection": "v",
-      "scopedVars": {
-        "hostnames": {
-          "selected": true,
-          "text": "vMX-addr-0",
-          "value": "vMX-addr-0"
-        }
-      },
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "AS",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "Current",
-          "preserveFormat": false,
-          "sanitize": false,
-          "thresholds": [
-            ""
-          ],
+          "pattern": "remote AS",
+          "thresholds": [],
           "type": "string",
-          "unit": "short",
-          "valueMaps": []
+          "unit": "short"
         },
         {
           "alias": "",
@@ -266,29 +283,35 @@
           "groupBy": [
             {
               "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
                 "bgpPeerRemoteAddr"
               ],
               "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
             }
           ],
           "measurement": "snmp_BGP",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
-          "resultFormat": "time_series",
+          "resultFormat": "table",
           "select": [
+            [
+              {
+                "params": [
+                  "bgpPeerState"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "session state"
+                ],
+                "type": "alias"
+              }
+            ],
             [
               {
                 "params": [
@@ -299,6 +322,12 @@
               {
                 "params": [],
                 "type": "last"
+              },
+              {
+                "params": [
+                  "remote AS"
+                ],
+                "type": "alias"
               }
             ]
           ],
@@ -317,8 +346,8 @@
           ]
         }
       ],
-      "title": "BGP remote AS - Device $hostnames",
-      "transform": "timeseries_aggregations",
+      "title": "BGP Peers  - Device $hostnames",
+      "transform": "table",
       "transparent": true,
       "type": "table"
     },
@@ -328,12 +357,198 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 18
       },
       "id": 7,
       "panels": [],
       "title": "Interfaces",
       "type": "row"
+    },
+    {
+      "columns": [
+        {
+          "text": "Current",
+          "value": "current"
+        }
+      ],
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 17,
+      "links": [],
+      "pageSize": null,
+      "repeat": "hostnames",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "hostnames": {
+          "selected": true,
+          "text": "vMX-addr-0",
+          "value": "vMX-addr-0"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "Op state",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "op state",
+          "thresholds": [
+            "2",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "up",
+              "value": "1"
+            },
+            {
+              "text": "down",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "admin state",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "admin state",
+          "thresholds": [
+            "2",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "up",
+              "value": "1"
+            },
+            {
+              "text": "down",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "$tag_ifName",
+          "groupBy": [
+            {
+              "params": [
+                "ifName"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "snmp_interfaces_statistics",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "ifOperStatus"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "op state"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ifAdminStatus"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "admin state"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname",
+              "operator": "=~",
+              "value": "/^$hostnames$/"
+            },
+            {
+              "condition": "AND",
+              "key": "ifName",
+              "operator": "=~",
+              "value": "/^$ifName$/"
+            }
+          ]
+        }
+      ],
+      "title": "Interfaces status - device $hostnames",
+      "transform": "table",
+      "transparent": true,
+      "type": "table"
     },
     {
       "columns": [
@@ -359,7 +574,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 29
       },
       "id": 13,
       "links": [],
@@ -506,7 +721,7 @@
           ]
         }
       ],
-      "title": "Interface Statistics for device $hostnames (bps)",
+      "title": "Interface Statistics - device $hostnames (bps)",
       "transform": "timeseries_aggregations",
       "transparent": true,
       "type": "table"
@@ -535,7 +750,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 29
       },
       "id": 14,
       "links": [],
@@ -670,297 +885,7 @@
           ]
         }
       ],
-      "title": "Interface Statistics for device $hostnames (unicast pps)",
-      "transform": "timeseries_aggregations",
-      "transparent": true,
-      "type": "table"
-    },
-    {
-      "columns": [
-        {
-          "text": "Current",
-          "value": "current"
-        }
-      ],
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 20
-      },
-      "id": 17,
-      "links": [],
-      "pageSize": null,
-      "repeat": "hostnames",
-      "repeatDirection": "v",
-      "scopedVars": {
-        "hostnames": {
-          "selected": true,
-          "text": "vMX-addr-0",
-          "value": "vMX-addr-0"
-        }
-      },
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "Op state",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Current",
-          "thresholds": [
-            "2",
-            "2"
-          ],
-          "type": "string",
-          "unit": "short",
-          "valueMaps": [
-            {
-              "text": "up",
-              "value": "1"
-            },
-            {
-              "text": "down",
-              "value": "2"
-            }
-          ]
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "alias": "$tag_ifName",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "ifName"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "snmp_interfaces_statistics",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "ifOperStatus"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=~",
-              "value": "/^$hostnames$/"
-            },
-            {
-              "condition": "AND",
-              "key": "ifName",
-              "operator": "=~",
-              "value": "/^$ifName$/"
-            }
-          ]
-        }
-      ],
-      "title": "Interfaces - device $hostnames",
-      "transform": "timeseries_aggregations",
-      "transparent": true,
-      "type": "table"
-    },
-    {
-      "columns": [
-        {
-          "text": "Current",
-          "value": "current"
-        }
-      ],
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 20
-      },
-      "id": 18,
-      "links": [],
-      "pageSize": null,
-      "repeat": "hostnames",
-      "repeatDirection": "v",
-      "scopedVars": {
-        "hostnames": {
-          "selected": true,
-          "text": "vMX-addr-0",
-          "value": "vMX-addr-0"
-        }
-      },
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "Admin state",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Current",
-          "thresholds": [
-            "2",
-            "2"
-          ],
-          "type": "string",
-          "unit": "short",
-          "valueMaps": [
-            {
-              "text": "up",
-              "value": "1"
-            },
-            {
-              "text": "down",
-              "value": "2"
-            }
-          ]
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "alias": "$tag_ifName",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "ifName"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "snmp_interfaces_statistics",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "ifAdminStatus"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=~",
-              "value": "/^$hostnames$/"
-            },
-            {
-              "condition": "AND",
-              "key": "ifName",
-              "operator": "=~",
-              "value": "/^$ifName$/"
-            }
-          ]
-        }
-      ],
-      "title": "Interfaces - device $hostnames",
+      "title": "Interface Statistics - device $hostnames (unicast pps)",
       "transform": "timeseries_aggregations",
       "transparent": true,
       "type": "table"
@@ -972,7 +897,8 @@
   "tags": [
     "snmp",
     "bgp",
-    "interfaces"
+    "interfaces",
+    "uptime"
   ],
   "templating": {
     "list": [
@@ -1006,7 +932,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -1034,7 +959,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "vMX-addr-0",
           "value": [
             "vMX-addr-0"
@@ -1091,7 +1015,7 @@
     ]
   },
   "timezone": "",
-  "title": "SNMP  tables",
+  "title": "SNMP tables",
   "uid": "GiQF-_Uik",
   "version": 1
 }
