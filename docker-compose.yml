@@ -25,7 +25,7 @@ services:
       - tig
 
   telegraf-snmp:
-    image: telegraf:1.9.1
+    image: ksator/telegraf_snmp
     container_name: telegraf-snmp
     volumes:
       - $PWD/configs/telegraf-snmp.conf:/etc/telegraf/telegraf.conf:ro
