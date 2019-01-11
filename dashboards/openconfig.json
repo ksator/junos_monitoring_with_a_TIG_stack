@@ -1,5 +1,6 @@
+
 {
-  "annotations": {
+  "annotattations": {
     "list": [
       {
         "builtIn": 1,
@@ -15,9 +16,173 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1546964075595,
+  "iteration": 1547208353880,
   "links": [],
   "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "panels": [],
+      "title": "Interfaces",
+      "type": "row"
+    },
+    {
+      "columns": [],
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 23,
+      "links": [],
+      "pageSize": null,
+      "repeat": "devices",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "devices": {
+          "selected": true,
+          "text": "100.123.1.0",
+          "value": "100.123.1.0"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "interfaces",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "/\\/interfaces.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "/interfaces/interface/@name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "/interfaces/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "/interfaces/interface/state/admin-status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "admin-status"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "/interfaces/interface/state/oper-status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "oper-status"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            },
+            {
+              "condition": "AND",
+              "key": "/interfaces/interface/@name",
+              "operator": "=~",
+              "value": "/^$interfaces$/"
+            }
+          ]
+        }
+      ],
+      "title": "interfaces status - Device $devices",
+      "transform": "table",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 19,
+      "panels": [],
+      "title": "BGP",
+      "type": "row"
+    },
     {
       "aliasColors": {},
       "bars": false,
@@ -27,9 +192,9 @@
       "fill": 1,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 0
+        "y": 11
       },
       "id": 10,
       "legend": {
@@ -38,7 +203,7 @@
         "current": true,
         "max": true,
         "min": true,
-        "rightSide": false,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -67,7 +232,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "# of EGBP neighbors configured",
+          "alias": "# of BGP neighbors configured",
           "groupBy": [
             {
               "params": [
@@ -82,6 +247,51 @@
               "type": "fill"
             }
           ],
+          "hide": false,
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/peer-type"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            }
+          ]
+        },
+        {
+          "alias": "# of EBGP neighbors configured",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
           "measurement": "/bgp/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -114,99 +324,59 @@
               "value": "EXTERNAL"
             }
           ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "EBGP neighbors configured on $devices",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
         },
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "description": "The number of  BGP sessions established  \nSelect a device",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 8,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "minSpan": 10,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": "devices",
-      "repeatDirection": "v",
-      "scopedVars": {
-        "devices": {
-          "selected": true,
-          "text": "100.123.1.0",
-          "value": "100.123.1.0"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
+          "alias": "# of IGBP neighbors configured",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "/bgp/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/peer-type"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$devices$/"
+            },
+            {
+              "condition": "AND",
+              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/peer-type",
+              "operator": "=",
+              "value": "INTERNAL"
+            }
+          ]
+        },
         {
-          "alias": "# of ESTABLISHED BGP session",
+          "alias": "# of BGP sessions  ESTABLISHED",
           "groupBy": [
             {
               "params": [
@@ -224,7 +394,7 @@
           "measurement": "/bgp/",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "A",
+          "refId": "B",
           "resultFormat": "time_series",
           "select": [
             [
@@ -245,12 +415,6 @@
               "key": "device",
               "operator": "=~",
               "value": "/^$devices$/"
-            },
-            {
-              "condition": "AND",
-              "key": "/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state/session-state",
-              "operator": "=",
-              "value": "ESTABLISHED"
             }
           ]
         }
@@ -259,7 +423,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "BGP sessions established on $devices",
+      "title": "BGP sessions - Device $devices",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -305,10 +469,10 @@
       "description": "The number of transitions to the BGP session state established.     \nSelect a device and a neighbor",
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 8,
+        "w": 24,
         "x": 0,
-        "y": 9
+        "y": 20
       },
       "id": 16,
       "legend": {
@@ -317,6 +481,7 @@
         "current": true,
         "max": true,
         "min": true,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -450,10 +615,10 @@
       "description": "Number of BGP prefixes received.  \nSelect a device to see how many BGP prefixes it received.   \nSelect a neighbor to see how many  BGP prefixes the device you selected received from the neighbor you selected",
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 9
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 28
       },
       "id": 17,
       "legend": {
@@ -462,6 +627,7 @@
         "current": true,
         "max": true,
         "min": true,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -475,7 +641,15 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
+      "repeat": "devices",
       "repeatDirection": "v",
+      "scopedVars": {
+        "devices": {
+          "selected": true,
+          "text": "100.123.1.0",
+          "value": "100.123.1.0"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -722,10 +896,10 @@
       "description": "Number of BGP prefixes sent.  \nSelect a device to see how many BGP prefixes it sent.   \nSelect a neighbor to see how many  BGP prefixes the device you selected sent to the neighbor you selected",
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 10,
+        "w": 24,
         "x": 0,
-        "y": 18
+        "y": 38
       },
       "id": 12,
       "legend": {
@@ -734,6 +908,7 @@
         "current": true,
         "max": true,
         "min": true,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
@@ -903,7 +1078,8 @@
   "tags": [
     "openconfig",
     "junos",
-    "bgp"
+    "bgp",
+    "interfaces"
   ],
   "templating": {
     "list": [
@@ -985,6 +1161,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "influxdb",
+        "definition": "SHOW TAG VALUES FROM  \"/interfaces/\" with KEY  = \"/interfaces/interface/@name\" ",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "interfaces",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM  \"/interfaces/\" with KEY  = \"/interfaces/interface/@name\" ",
+        "refresh": 1,
+        "regex": "/ge|xe-|et-.*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -1018,7 +1222,7 @@
     ]
   },
   "timezone": "",
-  "title": "openconfig BGP",
+  "title": "openconfig",
   "uid": "7fZJetsik",
   "version": 1
 }
