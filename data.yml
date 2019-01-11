@@ -1,4 +1,9 @@
 ---
+grafana:
+  web:
+    port: "9081"
+    username: "jcluser"
+    password: "Juniper!1"
 telegraf:
   openconfig:
     username: "jcluser"
