@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1547230167933,
+  "iteration": 1547395300570,
   "links": [],
   "panels": [
     {
@@ -47,8 +47,8 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 2,
-        "desc": true
+        "col": null,
+        "desc": false
       },
       "styles": [
         {
@@ -68,7 +68,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "jnxBoxInstalled",
+          "pattern": "uptime",
           "thresholds": [
             "10800",
             "86400"
@@ -116,7 +116,7 @@
               },
               {
                 "params": [
-                  "jnxBoxDescr"
+                  "HW model"
                 ],
                 "type": "alias"
               }
@@ -140,7 +140,7 @@
               },
               {
                 "params": [
-                  "jnxBoxInstalled"
+                  "uptime"
                 ],
                 "type": "alias"
               }
@@ -154,7 +154,7 @@
               },
               {
                 "params": [
-                  "jnxBoxSerialNo"
+                  "SN"
                 ],
                 "type": "alias"
               }
@@ -168,7 +168,7 @@
               },
               {
                 "params": [
-                  "sysApplInstallPkgVersion"
+                  "SW release"
                 ],
                 "type": "alias"
               }
@@ -376,7 +376,7 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 19,
       "scopedVars": {
         "hostnames": {
@@ -511,7 +511,7 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 19,
       "scopedVars": {
         "hostnames": {
@@ -646,7 +646,7 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 19,
       "scopedVars": {
         "hostnames": {
@@ -781,7 +781,7 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 19,
       "scopedVars": {
         "hostnames": {
@@ -916,7 +916,7 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 19,
       "scopedVars": {
         "hostnames": {
@@ -1051,7 +1051,7 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 19,
       "scopedVars": {
         "hostnames": {
@@ -1336,7 +1336,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 11,
       "scopedVars": {
         "hostnames": {
@@ -1515,7 +1515,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 11,
       "scopedVars": {
         "hostnames": {
@@ -1694,7 +1694,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 11,
       "scopedVars": {
         "hostnames": {
@@ -1873,7 +1873,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 11,
       "scopedVars": {
         "hostnames": {
@@ -2052,7 +2052,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 11,
       "scopedVars": {
         "hostnames": {
@@ -2231,7 +2231,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 11,
       "scopedVars": {
         "hostnames": {
@@ -2615,7 +2615,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 17,
       "scopedVars": {
         "hostnames": {
@@ -2804,7 +2804,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 17,
       "scopedVars": {
         "hostnames": {
@@ -2993,7 +2993,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 17,
       "scopedVars": {
         "hostnames": {
@@ -3182,7 +3182,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 17,
       "scopedVars": {
         "hostnames": {
@@ -3371,7 +3371,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 17,
       "scopedVars": {
         "hostnames": {
@@ -3560,7 +3560,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 17,
       "scopedVars": {
         "hostnames": {
@@ -3951,7 +3951,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 13,
       "scopedVars": {
         "hostnames": {
@@ -4130,7 +4130,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 13,
       "scopedVars": {
         "hostnames": {
@@ -4309,7 +4309,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 13,
       "scopedVars": {
         "hostnames": {
@@ -4488,7 +4488,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 13,
       "scopedVars": {
         "hostnames": {
@@ -4667,7 +4667,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 13,
       "scopedVars": {
         "hostnames": {
@@ -4846,7 +4846,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 13,
       "scopedVars": {
         "hostnames": {
@@ -5190,7 +5190,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 14,
       "scopedVars": {
         "hostnames": {
@@ -5357,7 +5357,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 14,
       "scopedVars": {
         "hostnames": {
@@ -5524,7 +5524,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 14,
       "scopedVars": {
         "hostnames": {
@@ -5691,7 +5691,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 14,
       "scopedVars": {
         "hostnames": {
@@ -5858,7 +5858,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 14,
       "scopedVars": {
         "hostnames": {
@@ -6025,7 +6025,7 @@
       "pageSize": null,
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1547230167933,
+      "repeatIteration": 1547395300570,
       "repeatPanelId": 14,
       "scopedVars": {
         "hostnames": {
