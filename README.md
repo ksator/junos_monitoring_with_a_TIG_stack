@@ -6,6 +6,10 @@ Please visit the [**wiki**](https://github.com/ksator/junos_monitoring_with_a_TI
 
 Here are some Grafana screenshots, with data collected using Openconfig telemetry (GRPC) on Junos devices:
 
+![inventory.png](resources/inventory.png)  
+
+![BGP.png](resources/BGP.png)  
+
 ![EBGP_peers_configured.png](resources/EBGP_peers_configured.png)
 
 ![BGP_sessions_state_established.png](resources/BGP_sessions_state_established.png)
@@ -14,7 +18,8 @@ Here are some Grafana screenshots, with data collected using Openconfig telemetr
 
 ![BGP_prefixes_received.png](resources/BGP_prefixes_received.png)
 
-![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)
+![BGP_prefixes_sent.png](resources/BGP_prefixes_sent.png)  
 
+![BGP.interfaces](resources/interfaces.png)  
 
 
