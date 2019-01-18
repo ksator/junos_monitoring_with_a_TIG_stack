@@ -23,11 +23,35 @@ telegraf-snmp-cli:
 	@echo "======================================================================"
 	docker exec -i -t telegraf-snmp /bin/bash
 
-influxb-cli:
+influxdb-cli:
 	@echo "======================================================================"
 	@echo "start a shell session in the influxb container"
 	@echo "======================================================================"
 	docker exec -it influxdb bash
+
+influxdb-logs:
+	@echo "======================================================================"
+	@echo "fetch the 100 last lines of logs of the influxb container"
+	@echo "======================================================================"
+	docker logs influxdb --tail 100
+
+grafana-logs:
+	@echo "======================================================================"
+	@echo "fetch the 100 last lines of logs of the grafana container"
+	@echo "======================================================================"
+	docker logs grafana --tail 100
+
+telegraf-snmp-logs:
+	@echo "======================================================================"
+	@echo "fetch the 100 last lines of logs of the telegraf-snmp container"
+	@echo "======================================================================"
+	docker logs telegraf-snmp --tail 100
+
+telegraf-openconfig-logs:
+	@echo "======================================================================"
+	@echo "fetch the 100 last lines of logs of the telegraf-openconfig container"
+	@echo "======================================================================"
+	docker logs telegraf-openconfig --tail 100
 
 restart: stop start
 
