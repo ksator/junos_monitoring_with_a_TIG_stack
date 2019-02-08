@@ -28,7 +28,7 @@ services:
   {% if telegraf.snmp is defined %}
 
   telegraf-snmp:
-    image: ksator/telegraf_snmp
+    image: ksator/telegraf_with_snmp_mib
     container_name: telegraf-snmp
     volumes:
       - $PWD/configs/telegraf-snmp.conf:/etc/telegraf/telegraf.conf:ro
